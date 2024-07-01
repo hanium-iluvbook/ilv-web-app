@@ -22,6 +22,10 @@ function AlphabetItem({ alphabet }) {
     if (failCount === 0) setSelected(false);
   }, [failCount]);
 
+  useEffect(() => {
+    checkFinish();
+  }, [correctAlphabets]);
+
   const checkCorrectAlphabet = () => {
     if (answer.includes(alphabet)) {
       const newCorrectAlphabets = [...correctAlphabets];
@@ -33,17 +37,15 @@ function AlphabetItem({ alphabet }) {
   };
 
   const checkFinish = () => {
-    if (answerAlphabetLength === correctAlphabets.length + 1) {
+    if (answerAlphabetLength === correctAlphabets.length) {
       setIsFinish(true);
     }
-    console.log(answerAlphabetLength, correctAlphabets.length);
   };
 
   const handleClickAlphabet = () => {
     if (selected || isFinish) return;
     setSelected(true);
     checkCorrectAlphabet();
-    checkFinish();
   };
 
   return (

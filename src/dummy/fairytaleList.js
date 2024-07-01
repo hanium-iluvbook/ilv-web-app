@@ -39,6 +39,18 @@ const fairytaleList = [
     like: false,
     background: null,
   },
+  {
+    title: 'Happy lucy day!',
+    keywords: ['biogeographical', 'biog', 'biogeographical'],
+    like: false,
+    background: null,
+  },
+  {
+    title: 'Happy lucy day!',
+    keywords: ['biogeographical', 'biog', 'biogeographical'],
+    like: false,
+    background: null,
+  },
 ];
 
 export default fairytaleList;

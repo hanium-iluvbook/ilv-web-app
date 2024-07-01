@@ -13,6 +13,7 @@ import { ReactComponent as Close } from '../assets/close.svg';
 import { ReactComponent as Crown } from '../assets/crown.svg';
 import { ReactComponent as Book } from '../assets/book.svg';
 import { ReactComponent as Add } from '../assets/add.svg';
+import Layout from '../components/Layout';
 
 function CreateFairytale() {
   const location = useLocation();
@@ -66,7 +67,7 @@ function CreateFairytale() {
   };
 
   return (
-    <CreateFairytaleContainer>
+    <Layout backgroundColor={whiteGray} color={darkGray}>
       <WordField>
         <WordFieldInfo>
           <WordFieldInfoTitle>단어로 동화 만들기</WordFieldInfoTitle>
@@ -124,28 +125,19 @@ function CreateFairytale() {
           </BookItemInfo>
         </BookItem>
       </BookContainer>
-      <Link to="/hangman" style={{ width: '100%' }}>
+      <Link to="/loading" style={{width: '100%'}}>
         <CreateFairytaleBtn $isActive={wordsList.length > 0}>
           <Add stroke={wordsList.length > 0 ? 'white' : darkGray} />
           동화 만들기
         </CreateFairytaleBtn>
       </Link>
-    </CreateFairytaleContainer>
+    </Layout>
   );
 }
 
-const CreateFairytaleContainer = styled.div`
-  width: 600px;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 16px;
-  background-color: ${whiteGray};
-`;
-
 const WordField = styled.div`
   width: 100%;
+  min-height: calc(100vh -80px);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -306,7 +298,7 @@ const Toggle = styled.div`
 `;
 
 const BookContainer = styled.div`
-  width: 461px;
+  width: 100%;
   position: relative;
   display: flex;
   overflow: hidden;
@@ -315,7 +307,7 @@ const BookContainer = styled.div`
 const BookItem = styled.div`
   position: absolute;
   top: 72px;
-  left: 50px;
+  left: 100px;
   display: flex;
   flex-direction: column;
   gap: 10px;

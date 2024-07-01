@@ -1,6 +1,13 @@
 import styled from 'styled-components';
-import { darkGray, darkMain, green, red, lightBlack } from '../constants/colors';
+import {
+  darkGray,
+  darkMain,
+  green,
+  red,
+  lightBlack,
+} from '../constants/colors';
 import Difficulty from '../components/settingDifficulty/Difficulty';
+import Layout from '../components/Layout';
 
 function SettingDifficulty() {
   const difficultyInfo = [
@@ -31,7 +38,7 @@ function SettingDifficulty() {
   ];
 
   return (
-    <SettingDifficultyContainer>
+    <Layout backgroundColor="white" color={darkGray}>
       <SettingDifficultyTitle>난이도 설정</SettingDifficultyTitle>
       <SettingDifficultyInfo>
         선택된 나이에따라 교과 과정에 맞는
@@ -50,18 +57,9 @@ function SettingDifficulty() {
           />
         ))}
       </DifficultyBox>
-    </SettingDifficultyContainer>
+    </Layout>
   );
 }
-
-const SettingDifficultyContainer = styled.div`
-  width: 600px;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 0px;
-`;
 
 const SettingDifficultyTitle = styled.div`
   font-family: 'Jalnan';
@@ -69,6 +67,8 @@ const SettingDifficultyTitle = styled.div`
   line-height: 26px;
   margin-bottom: 8px;
   color: ${lightBlack};
+  display: flex;
+  justify-content: center;
 `;
 
 const SettingDifficultyInfo = styled.div`

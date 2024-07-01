@@ -9,7 +9,7 @@ function Fairytale({ fairytaleInfo, id }) {
   const colors = [main, blue, green, purple, pink];
 
   return fairytale ? (
-    <FairytaleContainer color={colors[id]}>
+    <FairytaleContainer color={colors[id % 5]}>
       <FairytaleInfo>
         <Title>{fairytale.title}</Title>
         <Keywords>
@@ -18,8 +18,8 @@ function Fairytale({ fairytaleInfo, id }) {
           ))}
         </Keywords>
         <Btns>
-          <StartBtn color={colors[id]}>
-            <Play fill={colors[id]} />
+          <StartBtn color={colors[id % 5]}>
+            <Play fill={colors[id % 5]} />
             Start
           </StartBtn>
           <LikeBtn>

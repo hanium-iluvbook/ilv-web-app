@@ -92,7 +92,7 @@ function HangmanCanvas() {
     }
   }, [failCount]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas ref={canvasRef} style={{ width: '450px', height: '250px' }} />;
 }
 
 export default HangmanCanvas;

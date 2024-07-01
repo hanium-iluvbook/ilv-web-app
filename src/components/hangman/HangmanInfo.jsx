@@ -30,7 +30,7 @@ const HangmanInfoBox = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  padding-bottom: 8px;
 `;
 
 const HangmanTitle = styled.div`

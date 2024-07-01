@@ -23,7 +23,7 @@ const AnswerDisplayContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 6px;
-  cursor: default
+  cursor: default;
 `;
 
 const AnswerAlphabet = styled.div`
