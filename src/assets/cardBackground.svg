@@ -1,0 +1,36 @@
+<svg width="current" viewBox="0 0 312 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="273" cy="276.5" rx="39" ry="43.5" fill="#9CD11E" />
+    <ellipse cx="6.5" cy="15" rx="12.5" ry="19" fill="#9CD11E" />
+    <ellipse cx="25" cy="37.5" rx="25" ry="37.5" transform="matrix(-1 0 0 1 333 -4)" fill="#9CD11E" />
+    <ellipse cx="11.9434" cy="20.4941" rx="11.9434" ry="20.4941"
+        transform="matrix(0.735612 -0.677403 0.735612 0.677403 1.66797 0.359863)" fill="#8ED03A" />
+    <ellipse cx="4.5645" cy="7.46753" rx="4.5645" ry="7.46753"
+        transform="matrix(0.903228 -0.429161 0.488808 0.872392 37.9414 76.8691)" fill="#A1D12C" />
+    <ellipse cx="4.45946" cy="7.65212" rx="4.45946" ry="7.65212"
+        transform="matrix(0.735612 0.677403 -0.735612 0.677403 279.223 73.8301)" fill="#A1D12C" />
+    <ellipse cx="4.3668" cy="7.80788" rx="4.3668" ry="7.80788"
+        transform="matrix(-0.531194 0.84725 -0.882964 -0.469441 231.988 42.4878)" fill="#A1D12C" />
+    <ellipse cx="4.5645" cy="7.46753" rx="4.5645" ry="7.46753"
+        transform="matrix(0.903228 -0.429161 0.488808 0.872392 58.9375 16.2227)" fill="#A1D12C" />
+    <ellipse cx="2.47375" cy="4.43493" rx="2.47375" ry="4.43493"
+        transform="matrix(0.514386 -0.857559 0.891321 0.453373 61.8008 27.9736)" fill="#A1D12C" />
+    <ellipse cx="23.6773" cy="40.6285" rx="23.6773" ry="40.6285"
+        transform="matrix(-0.735612 -0.677403 -0.735612 0.677403 317.711 3.95215)" fill="#8ED03A" />
+    <ellipse cx="273" cy="309" rx="36" ry="60" transform="rotate(90 273 309)" fill="#9CD11E" />
+    <ellipse cx="270.5" cy="369" rx="60" ry="101.5" transform="rotate(90 270.5 369)" fill="#9CD11E" />
+    <ellipse cx="27" cy="303" rx="30" ry="34" fill="#9CD11E" />
+    <ellipse cx="93.5" cy="332" rx="21.5" ry="24" fill="#9CD11E" />
+    <ellipse cx="27" cy="328" rx="27" ry="46" transform="rotate(90 27 328)" fill="#9CD11E" />
+    <ellipse cx="94" cy="349.5" rx="19.5" ry="33" transform="rotate(90 94 349.5)" fill="#9CD11E" />
+    <ellipse cx="25.5" cy="374" rx="46" ry="78.5" transform="rotate(90 25.5 374)" fill="#9CD11E" />
+    <ellipse cx="92.5" cy="382.5" rx="32.5" ry="55.5" transform="rotate(90 92.5 382.5)"
+        fill="#9CD11E" />
+    <path d="M95 -9C88.8802 20.1065 60.3125 76.0604 -5 67.0244" stroke="#A1D12C"
+        strokeWidth="2.63679" />
+    <path d="M87 -44C87 57.6844 -2.63986 126.192 1.11474 82.6747" stroke="#A1D12C"
+        strokeWidth="2.63679" />
+    <path d="M240 -6C247.874 31.3449 294.805 197.764 362 103.451" stroke="#A1D12C"
+        strokeWidth="2.63679" />
+    <path d="M204 -34C211.874 3.07432 258.805 168.287 326 74.6579" stroke="#A1D12C"
+        strokeWidth="2.63679" />
+</svg>

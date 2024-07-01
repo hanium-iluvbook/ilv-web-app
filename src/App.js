@@ -3,7 +3,10 @@ import './App.css';
 import Main from './pages/Main';
 import SettingDifficulty from './pages/SettingDifficulty';
 import CreateFairytale from './pages/CreateFairytale';
-import Hangman from './pages/Hangman';
+import Loading from './pages/Loading';
+import Fairytale from './pages/OptionalFairytale';
+import MyVocabularyList from './pages/MyVocabularyList';
+import VocabularyList from './pages/VocabularyList';
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/settingDifficulty" element={<SettingDifficulty />} />
           <Route path="/createFairytale" element={<CreateFairytale />} />
-          <Route path="/hangman" element={<Hangman />} />
+          <Route path="/loading" element={<Loading />} />
+          <Route path="/fairytale" element={<Fairytale />} />
+          <Route path="/myVocabularyList" element={<MyVocabularyList />} />
+          <Route path="/vocabularyList" element={<VocabularyList />} />
         </Routes>
       </BrowserRouter>
     </div>
