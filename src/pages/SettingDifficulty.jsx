@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 function SettingDifficulty() {
   const difficultyInfo = [
     {
-      difficulty: 0,
+      difficulty: 'low',
       title: '영유아',
       info: '4세에서 7세의 아이들에게',
       border: '#FFE178',
@@ -20,7 +20,7 @@ function SettingDifficulty() {
       color: darkMain,
     },
     {
-      difficulty: 1,
+      difficulty: 'mid',
       title: '초등학교 저학년',
       info: '8세에서 10세의 아이들에게',
       border: '#B2F76D',
@@ -28,7 +28,7 @@ function SettingDifficulty() {
       color: green,
     },
     {
-      difficulty: 2,
+      difficulty: 'high',
       title: '초등학교 고학년',
       info: '10세에서 13세의 아이들에게',
       border: '#FFA9A9',
@@ -38,7 +38,7 @@ function SettingDifficulty() {
   ];
 
   return (
-    <Layout backgroundColor="white" color={darkGray}>
+    <Layout backgroundColor="#F7F8FA" color={darkGray}>
       <SettingDifficultyTitle>난이도 설정</SettingDifficultyTitle>
       <SettingDifficultyInfo>
         선택된 나이에따라 교과 과정에 맞는
