@@ -63,6 +63,7 @@ const Title = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 20px;
+  color: white;
 `;
 
 const Keywords = styled.div`
@@ -90,6 +91,7 @@ const Keyword = styled.div`
   padding: 6px 10px;
   border-radius: 300px;
   margin-bottom: 30px;
+  color: white;
 `;
 
 const Btns = styled.div`

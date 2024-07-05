@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as Before } from '../assets/before.svg';
 import { useNavigate } from 'react-router-dom';
+import { lightBlack } from '../constants/colors';
 
 function Header({ backgroundColor, color, title }) {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.$backgroundColor};
-  color: ${(props) => props.color};
+  color: ${(props) => props.color === 'white' ? 'white' : lightBlack };
   position: absolute;
   top: 0;
   left: 0;

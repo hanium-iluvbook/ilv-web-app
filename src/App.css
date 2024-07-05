@@ -130,6 +130,7 @@ a {
 * {
   box-sizing: border-box;
   cursor: default;
+  color: #1F2021;
 }
 
 @font-face {
