@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import { darkGray, whiteGray } from '../constants/colors';
 import { ReactComponent as Add } from '../assets/add.svg';
 import Profile from '../components/myVocabularyList/Profile';
-import VocabularyItemBox from '../components/myVocabularyList/VocaubularyItemBox';
+import VocabularyListBox from '../components/myVocabularyList/VocaubularyListBox';
 
 function MyVocabularyList() {
   return (
@@ -17,7 +17,7 @@ function MyVocabularyList() {
           </CreateVocabularyList>
         </VocabularyListText>
         <Profile />
-        <VocabularyItemBox />
+        <VocabularyListBox />
       </VocabularyListContainer>
     </Layout>
   );

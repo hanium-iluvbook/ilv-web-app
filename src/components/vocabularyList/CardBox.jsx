@@ -12,11 +12,6 @@ function CardBox() {
   const [isAnimate, setIsAnimate] = useState(true);
 
   useEffect(() => {
-    console.log(isAnimate);
-  }, [isAnimate]);
-
-  useEffect(() => {
-    console.log(positionId);
     if (positionId === -1) {
       setTimeout(() => {
         setPositionId(word.length - 1);

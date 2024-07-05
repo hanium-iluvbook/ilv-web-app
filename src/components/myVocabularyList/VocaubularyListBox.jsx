@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { vocabularyList } from '../../dummy/vocabularyList';
 import { blue, green, main, pink, purple } from '../../constants/colors';
 
-function VocabularyItemBox() {
+function VocabularyListBox() {
   const [voca, setVoca] = useState(vocabularyList);
-  const colors = [main, blue, green, purple, pink];
+  const colors = [main, green, purple, pink, blue];
 
   return (
     <VocabularyItemBoxContainer>
@@ -36,4 +36,4 @@ const VocabularyItemBoxContainer = styled.div`
   flex-direction: column;
   gap: 16px;
 `;
-export default VocabularyItemBox;
+export default VocabularyListBox;
