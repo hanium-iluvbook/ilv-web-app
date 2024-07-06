@@ -7,6 +7,8 @@ import Loading from './pages/Loading';
 import Fairytale from './pages/OptionalFairytale';
 import MyVocabularyList from './pages/MyVocabularyList';
 import VocabularyList from './pages/VocabularyList';
+import Quiz from './pages/Quiz';
+import MyQuiz from './pages/MyQuiz';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/fairytale" element={<Fairytale />} />
           <Route path="/myVocabularyList" element={<MyVocabularyList />} />
           <Route path="/vocabularyList" element={<VocabularyList />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/myQuiz" element={<MyQuiz />} />
         </Routes>
       </BrowserRouter>
     </div>
