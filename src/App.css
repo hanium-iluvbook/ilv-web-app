@@ -152,3 +152,11 @@ a {
   justify-content: center;
   font-family: 'Pretendard';
 }
+
+.svg-icon {
+  cursor: pointer;
+}
+
+.svg-icon * {
+  cursor: inherit;
+}

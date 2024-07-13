@@ -48,6 +48,7 @@ const KeywordContainer = styled.div`
   background-color: ${(props) => (props.selected ? lightBlack : 'white')};
   color: ${(props) => (props.selected ? 'white' : lightBlack)};
   position: relative;
+  cursor: pointer;
 `;
 
 const SelectCount = styled.div`
