@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import { blue, darkGray, lightBlack } from '../../constants/colors';
+import { blue, darkGray, darkMain, lightBlack } from '../../constants/colors';
+import { HangmanContext } from '../../context/HangmanContext';
+import { useContext } from 'react';
+import { ReactComponent as Sticker } from '../../assets/sticker.svg';
 
 function HangmanInfo({ hint }) {
+  const { failCount, answer, correctAlphabets } = useContext(HangmanContext);
+
   return (
     <HangmanInfoContainer>
       <HangmanInfoBox>
@@ -15,14 +20,26 @@ function HangmanInfo({ hint }) {
       <Hint>
         <HintTitle>Hint!</HintTitle>
         {hint}
+        {correctAlphabets.length === new Set(answer.split('')).size && (
+          <StickerContainer>
+            <StyledSticker fill={darkMain} />
+            <StickerText>Great!</StickerText>
+          </StickerContainer>
+        )}
+        {failCount > 5 && (
+          <StickerContainer>
+            <StyledSticker fill="black" />
+            <StickerText>Lose</StickerText>
+          </StickerContainer>
+        )}
       </Hint>
     </HangmanInfoContainer>
   );
 }
 
 const HangmanInfoContainer = styled.div`
-    width: 100%;
-`
+  width: 100%;
+`;
 
 const HangmanInfoBox = styled.div`
   width: 100%;
@@ -60,6 +77,7 @@ const Hint = styled.div`
   font-size: 16px;
   font-weight: 500;
   line-height: 19px;
+  position: relative;
 `;
 
 const HintTitle = styled.div`
@@ -74,6 +92,34 @@ const HintTitle = styled.div`
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;
+`;
+
+const StickerContainer = styled.div`
+  position: absolute;
+  right: 0;
+  width: 133px;
+  height: 102px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+`;
+
+const StyledSticker = styled(Sticker)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: 0px 4.223px 4.223px 0px rgba(0, 0, 0, 0.25);
+`;
+
+const StickerText = styled.div`
+  font-family: 'Jalnan';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 9.066px;
+  color: white;
+  z-index: 3;
+  transform: rotate(27.466deg);
 `;
 
 export default HangmanInfo;

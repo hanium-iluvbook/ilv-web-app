@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { HangmanContext } from '../../context/HangmanContext';
-import { main } from '../../constants/colors';
+import { darkMain } from '../../constants/colors';
 
 function AnswerDisplay() {
   const { correctAlphabets, answer } = useContext(HangmanContext);
@@ -39,7 +39,7 @@ const AnswerAlphabet = styled.div`
   font-family: 'Jalnan';
   font-size: 18px;
   line-height: 19px;
-  color: ${main};
+  color: ${darkMain};
 `;
 
 const UnderLine = styled.div`
@@ -47,7 +47,7 @@ const UnderLine = styled.div`
   bottom: 12px;
   width: 20px;
   height: 3px;
-  background-color: ${main};
+  background-color: ${darkMain};
   border-radius: 100px;
 `;
 

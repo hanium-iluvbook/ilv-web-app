@@ -81,9 +81,11 @@ function HangmanCanvas() {
                   ctx.lineTo(260, 195);
                   ctx.stroke();
                 }
-                setFailCount(0);
-                setCorrectAlphabets([]);
-                resetCanvas();
+                setTimeout(() => {
+                  setFailCount(0);
+                  setCorrectAlphabets([]);
+                  resetCanvas();
+                }, 2000);
               }
             }
           }

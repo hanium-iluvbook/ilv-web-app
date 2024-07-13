@@ -1,15 +1,26 @@
 import styled from 'styled-components';
-import { main } from '../../constants/colors';
+import { green, main } from '../../constants/colors';
 import { ReactComponent as RabbitShadow } from '../../assets/rabbitShadow.svg';
+import { ReactComponent as HangmanCard } from '../../assets/hangmanCard.svg';
 
-function FairytaleCard() {
+function FairytaleCard({ type }) {
   return (
-    <FairytaleCardContainer>
-      <English>English</English>
-      <RabbitShadow style={{ position: 'absolute', right: 0, bottom: 0 }} />
+    <FairytaleCardContainer $type={type}>
+      <English>{type === 'game' ? 'Game ' : 'English'}</English>
+      {type === 'game' ? (
+        <HangmanCard style={{ position: 'absolute', right: 0, bottom: 0 }} />
+      ) : (
+        <RabbitShadow style={{ position: 'absolute', right: 0, bottom: 0 }} />
+      )}
       <CardInfo>
-        <CardTitle>나만의 동화책</CardTitle>
-        <CardDes>세상에 하나밖에 없는 나만의 이야기</CardDes>
+        <CardTitle>
+          {type === 'game' ? '행맨 게임하기 ' : '나만의 동화책'}
+        </CardTitle>
+        <CardDes>
+          {type === 'game'
+            ? '기다리는동안 행맨 게임을 해볼까요?'
+            : '세상에 하나밖에 없는 나만의 이야기'}
+        </CardDes>
       </CardInfo>
     </FairytaleCardContainer>
   );
@@ -19,7 +30,7 @@ const FairytaleCardContainer = styled.div`
   width: 300px;
   height: 420px;
   border-radius: 16.198px;
-  background-color: ${main};
+  background-color: ${(props) => (props.$type === 'game' ? green : main)};
   box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.19);
   position: relative;
   padding: 24px 20px;
@@ -45,7 +56,7 @@ const English = styled.div`
 const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6px
+  gap: 6px;
 `;
 
 const CardTitle = styled.div`

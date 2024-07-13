@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { HangmanContext } from '../../context/HangmanContext';
 import styled, { css } from 'styled-components';
-import { darkGray, lightGray, main } from '../../constants/colors';
+import { darkGray, lightGray, darkMain } from '../../constants/colors';
 
 function AlphabetItem({ alphabet }) {
   const {
@@ -38,12 +38,20 @@ function AlphabetItem({ alphabet }) {
 
   const checkFinish = () => {
     if (answerAlphabetLength === correctAlphabets.length) {
-      setIsFinish(true);
+      setTimeout(() => {
+        setIsFinish(true);
+      }, 2000);
     }
   };
 
   const handleClickAlphabet = () => {
-    if (selected || isFinish) return;
+    if (
+      selected ||
+      correctAlphabets.length === answerAlphabetLength ||
+      failCount > 5
+    ) {
+      return;
+    }
     setSelected(true);
     checkCorrectAlphabet();
   };
@@ -51,7 +59,9 @@ function AlphabetItem({ alphabet }) {
   return (
     <AlphabetItemContainer
       selected={selected}
-      $isFinish={isFinish}
+      $isStop={
+        correctAlphabets.length === answerAlphabetLength || failCount > 5
+      }
       onClick={handleClickAlphabet}
     >
       {alphabet}
@@ -66,7 +76,7 @@ const selectedStyle = css`
 
 const nonSelectedStyle = css`
   background: white;
-  color: ${main};
+  color: ${darkMain};
   cursor: ${(props) => (props.$isFinish ? 'default' : 'pointer')};
 `;
 
@@ -77,6 +87,7 @@ const AlphabetItemContainer = styled.div`
   justify-content: center;
   align-items: center;
   ${(props) => (props.selected ? selectedStyle : nonSelectedStyle)}
+  cursor: ${(props) => (props.$isStop ? 'default' : 'pointer')};
   border-radius: 4px;
   box-shadow: 0px 4px 12.9px 0px rgba(0, 0, 0, 0.05);
   font-family: 'Jalnan';

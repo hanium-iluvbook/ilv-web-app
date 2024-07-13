@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darkGray, lightBlack, lightGray } from '../../constants/colors';
+import { darkGray } from '../../constants/colors';
 
 function LoadingText() {
   return (
@@ -24,7 +24,6 @@ const LoadingTextContainer = styled.div`
   gap: 8px;
   justify-content: center;
   text-align: center;
-  padding: 28px 0px 54px 0px;
 `;
 
 const LoadingTitle = styled.div`
@@ -32,7 +31,6 @@ const LoadingTitle = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 30px;
-  color: ${lightBlack};
 `;
 
 const LoadingInfo = styled.div`
