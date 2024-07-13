@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Header from './Header';
 
-function Layout({ children, backgroundColor, color, title }) {
+function Layout({ children, backgroundColor, color, title, padding }) {
   return (
     <LayoutContainer $backgroundColor={backgroundColor}>
-      <Header backgroundColor={backgroundColor} color={color} title={title}/>
-      <Main>{children}</Main>
+      <Header backgroundColor={backgroundColor} color={color} title={title} />
+      <Main $padding={padding}>{children}</Main>
     </LayoutContainer>
   );
 }
@@ -28,7 +28,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
+  padding-top: ${(props) => props.$padding !== 0 && '80px'};
 `;
 
 export default Layout;

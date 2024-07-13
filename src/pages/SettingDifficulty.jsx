@@ -5,6 +5,7 @@ import {
   green,
   red,
   lightBlack,
+  backgroundGray,
 } from '../constants/colors';
 import Difficulty from '../components/settingDifficulty/Difficulty';
 import Layout from '../components/Layout';
@@ -38,7 +39,7 @@ function SettingDifficulty() {
   ];
 
   return (
-    <Layout backgroundColor="#F7F8FA" color={darkGray}>
+    <Layout backgroundColor={backgroundGray} color={darkGray}>
       <SettingDifficultyTitle>난이도 설정</SettingDifficultyTitle>
       <SettingDifficultyInfo>
         선택된 나이에따라 교과 과정에 맞는
@@ -65,7 +66,7 @@ const SettingDifficultyTitle = styled.div`
   font-family: 'Jalnan';
   font-size: 24px;
   line-height: 26px;
-  margin-bottom: 8px;
+  padding-bottom: 8px;
   color: ${lightBlack};
   display: flex;
   justify-content: center;
@@ -77,7 +78,7 @@ const SettingDifficultyInfo = styled.div`
   line-height: 160%;
   color: ${darkGray};
   text-align: center;
-  margin-bottom: 18px;
+  padding-bottom: 18px;
 `;
 
 const DifficultyBox = styled.div`
@@ -85,6 +86,7 @@ const DifficultyBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-bottom: 16px;
 `;
 
 export default SettingDifficulty;

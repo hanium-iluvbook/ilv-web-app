@@ -9,4 +9,5 @@ export const lightGray = '#E8E9ED';
 export const gray = '#B5B6BD';
 export const darkGray = '#6F7075';
 export const lightBlack = '#1F2021';
+export const backgroundGray = '#F7F8FA';
 export const red = '#ED462F';

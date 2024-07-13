@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { darkGray, darkMain, lightGray } from '../constants/colors';
+import { darkGray, lightBlack, lightGray } from '../constants/colors';
 import { ReactComponent as Add } from '../assets/add.svg';
 import Layout from '../components/Layout';
 import CreateOptionalFairytale from '../components/createFairytale/CreateOptionalFairytale';
 import SelectKeywordsBox from '../components/createFairytale/SelectKeywordsBox';
-import axios from 'axios';
 
 function CreateFairytale() {
   const location = useLocation();
   const difficulty = location.state?.difficulty;
+
+  const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(false);
   const [isProVersion, setIsProVersion] = useState(false);
@@ -22,32 +23,17 @@ function CreateFairytale() {
     genre: [],
   });
 
-  const getFairytale = () => {
-    const url = `${process.env.REACT_APP_BASE_URL_FAIRYTALE}/${difficulty}`;
-    const data = {
-      keywords: selectedInfo,
-      fairytale: '',
-      isSelection: '',
-      count: '',
-    };
-
-    return axios({
-      url,
-      method: 'POST',
-      data,
-    });
-  };
-
   const handleClickCreateFairytaleBtn = (e) => {
     e.preventDefault();
     if (!isActive) return;
-    getFairytale()
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    
+    navigate('/loading', {
+      state: {
+        difficulty,
+        isProVersion,
+        keywords: selectedInfo,
+      },
+    });
   };
 
   return (
@@ -65,7 +51,7 @@ function CreateFairytale() {
         $isActive={isActive}
         onClick={(e) => handleClickCreateFairytaleBtn(e)}
       >
-        <Add />
+        <Add stroke={isActive ? 'white' : darkGray} />
         동화 만들기
       </CreateFairytaleBtn>
     </Layout>
@@ -78,7 +64,7 @@ const nonActiveBtnStyle = css`
 `;
 
 const activeBtnStyle = css`
-  background: ${darkMain};
+  background: ${lightBlack};
   color: white;
 `;
 
@@ -91,12 +77,13 @@ const CreateFairytaleBtn = styled.button`
   gap: 6px;
   border: none;
   border-radius: 100px;
-  background-color: ${darkMain};
+  background-color: ${lightBlack};
   color: white;
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;
   ${(props) => (props.$isActive ? activeBtnStyle : nonActiveBtnStyle)};
+  margin-bottom: 16px;
   cursor: pointer;
 `;
 

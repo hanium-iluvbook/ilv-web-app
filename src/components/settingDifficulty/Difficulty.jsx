@@ -56,7 +56,7 @@ const DifficultyInfo = styled.div`
 const StartBtn = styled.div`
   display: inline-flex;
   padding: 12px 16px;
-  align-items: flex-start;
+  align-items: center;
   gap: 4px;
   background-color: white;
   color: ${(props) => props.color};

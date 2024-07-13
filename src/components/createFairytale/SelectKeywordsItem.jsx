@@ -5,7 +5,7 @@ import {
   gray,
   lightBlack,
   lightGray,
-  main,
+  darkMain,
 } from '../../constants/colors';
 import { ReactComponent as Add } from '../../assets/add.svg';
 import { useEffect, useState } from 'react';
@@ -28,10 +28,10 @@ function SelectKeywordsItem({
 
   const handleSubmitAddKeyword = (e) => {
     e.preventDefault();
-    if(!isActiveBtn) return
+    if (!isActiveBtn) return;
     const newKeywordInfo = JSON.parse(JSON.stringify(keywordInfo));
     newKeywordInfo[id].keywords.push(keywordInputValue);
-    setIsOpenAddKeywordInput(false)
+    setIsOpenAddKeywordInput(false);
     setKeywordInputValue('');
     setKeywordInfo(newKeywordInfo);
   };
@@ -89,11 +89,7 @@ function SelectKeywordsItem({
               value={keywordInputValue}
               onChange={(e) => handleChangeKeywordInput(e)}
             />
-            <AddKeywordSubmitBtn
-              type="submit"
-              $isActiveBtn={isActiveBtn}
-              
-            >
+            <AddKeywordSubmitBtn type="submit" $isActiveBtn={isActiveBtn}>
               <Add stroke={isActiveBtn ? 'white' : gray} />
             </AddKeywordSubmitBtn>
           </AddKeywordForm>
@@ -182,7 +178,7 @@ const AddKeywordSubmitBtn = styled.button`
   align-items: center;
   border: none;
   border-radius: 300px;
-  background-color: ${(props) => (props.$isActiveBtn ? main : lightGray)};
+  background-color: ${(props) => (props.$isActiveBtn ? darkMain : lightGray)};
   position: absolute;
   top: 3px;
   right: 4px;
