@@ -3,30 +3,43 @@ import { QuizContext } from '../../context/QuizContext';
 import styled from 'styled-components';
 import { blue, gray } from '../../constants/colors';
 import QuizItem from './QuizItem';
+import { useNavigate } from 'react-router-dom';
 
-function QuizBox({ quiz }) {
-  const { progress, setProgress } = useContext(QuizContext);
+function QuizBox() {
+  const { progress, setProgress, level, quizzes, resultInfo, setResultInfo } =
+    useContext(QuizContext);
+
+  const navigate = useNavigate();
+
   const [userAnswer, setUserAnswer] = useState(null);
   const [isActive, setIsActive] = useState(false);
-  const [resultInfo, setResultInfo] = useState([]);
 
-  const handleClickNextQuizBtn = () => {
-    console.log(progress, quiz[progress].answer, userAnswer);
-    const newResultInfo = JSON.parse(JSON.stringify(resultInfo));
-    newResultInfo.push({
-      quiz_num: quiz[progress].quiz_num,
-      user_answer: userAnswer,
-      correct: userAnswer === quiz[progress].answer,
-    });
-    setResultInfo(newResultInfo);
-    console.log(newResultInfo);
+  const handleClickNextQuizBtn = (e) => {
+    e.preventDefault();
+    if (!userAnswer) return;
+
+    if (quizzes[progress].quiz_type !== 'Creativity Quiz') {
+      const newResultInfo = JSON.parse(JSON.stringify(resultInfo));
+      newResultInfo.push({
+        quiz_num: quizzes[progress].quiz_num,
+        user_answer: userAnswer,
+        correct: userAnswer === quizzes[progress].answer,
+      });
+      setResultInfo(newResultInfo);
+    }
 
     if (progress < 9) {
       setIsActive(false);
       setUserAnswer(null);
       setProgress((prev) => prev + 1);
     } else {
-      // resultInfo 전달과 함께 결과 확인창으로 넘어가기
+      navigate('/quizResult', {
+        state: {
+          quizzes,
+          resultInfo,
+          level,
+        },
+      });
     }
   };
 
@@ -39,22 +52,24 @@ function QuizBox({ quiz }) {
   }, [userAnswer, setIsActive]);
 
   return (
-    <QuizBoxContainer>
+    <QuizBoxContainer onSubmit={(e) => handleClickNextQuizBtn(e)}>
       <Title>
         <TitleLogo>Title</TitleLogo>
         <TitleText>Hansel and Gretel Hansel and Gretel</TitleText>
       </Title>
       <QuizItem
-        quiz_num={quiz[progress].quiz_num}
-        question={quiz[progress].question}
-        type={quiz[progress].type} // 부문(Reading Comprehension Quiz, Voca Quiz, Listening Quiz, Creavity Quiz)
-        format={quiz[progress].format} // 문제 유형(True/False, Multiple Choice, Short Answer)
-        options={quiz[progress].options}
+        quiz_num={quizzes[progress].quiz_num}
+        question={quizzes[progress].question}
+        quiz_type={quizzes[progress].quiz_type}
+        format={quizzes[progress].format}
+        voca={quizzes[progress].pronunciation_or_voca}
+        options={quizzes[progress].options}
         userAnswer={userAnswer}
         setUserAnswer={setUserAnswer}
+        level={level}
       />
       {isActive && (
-        <NextQuizBtn onClick={handleClickNextQuizBtn}>
+        <NextQuizBtn>
           {progress < 9 ? '다음 문제' : '결과 확인하기'}
         </NextQuizBtn>
       )}
@@ -62,11 +77,10 @@ function QuizBox({ quiz }) {
   );
 }
 
-const QuizBoxContainer = styled.div`
+const QuizBoxContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 `;
 
 const Title = styled.div`
@@ -74,6 +88,7 @@ const Title = styled.div`
   padding: 24px 0px 8px 0px;
   width: 100%;
   gap: 8px;
+  padding-bottom: 16px;
 `;
 
 const TitleLogo = styled.div`
@@ -113,6 +128,7 @@ const NextQuizBtn = styled.button`
   color: white;
   border: none;
   align-self: flex-end;
+  margin-bottom: 16px;
 `;
 
 export default QuizBox;

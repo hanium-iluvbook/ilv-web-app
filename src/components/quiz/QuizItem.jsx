@@ -19,11 +19,14 @@ import axios from 'axios';
 function QuizItem({
   quiz_num,
   question,
-  type,
+  quiz_type,
   format,
+  voca,
   options,
   userAnswer,
   setUserAnswer,
+  level,
+  answer,
 }) {
   const [audioContent, setAudioContent] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -33,9 +36,9 @@ function QuizItem({
     const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
 
     const data = {
-      input: { text: question },
+      input: { text: voca },
       voice: { languageCode: 'en-US', ssmlGender: 'NEUTRAL' },
-      audioConfig: { audioEncoding: 'MP3' },
+      audioConfig: { audioEncoding: 'MP3', speakingRate: 0.7 },
     };
 
     return axios({
@@ -46,18 +49,19 @@ function QuizItem({
   };
 
   useEffect(() => {
-    if (type === 'Listening Quiz') {
-      getAudioContent()
+    if (quiz_type === 'Listening Quiz') {
+      /*getAudioContent()
         .then(function (response) {
           setAudioContent(response.data.audioContent);
         })
         .catch(function (error) {
           console.log(error);
-        });
+        });*/
     }
   }, [quiz_num]);
 
   const handleClickAnswer = (v) => {
+    if (answer) return;
     setUserAnswer(v);
   };
 
@@ -78,6 +82,8 @@ function QuizItem({
       return '문법 퀴즈';
     } else if (v === 'Listening Quiz') {
       return '듣기 퀴즈';
+    } else if (v === 'Voca Quiz') {
+      return '단어 퀴즈';
     } else {
       return '창의력 퀴즈';
     }
@@ -85,47 +91,64 @@ function QuizItem({
 
   return (
     <QuizItemContainer>
-      {type !== 'Voca Quiz' ? (
-        <QuizContainer>
-          <QuizInfo>
-            <QuizNum>Quiz.{quiz_num}</QuizNum>
-            <QuizSector>{translateType(type)}</QuizSector>
-          </QuizInfo>
-          <Quiz>
-            {type === 'Listening Quiz'
-              ? '음성을 듣고 올바른 정답을 골라주세요.'
-              : question}
-          </Quiz>
-          {audioContent && (
-             <AudioButton $isPlaying={isPlaying} onClick={handlePlayAudio}>
-             <Volume stroke={isPlaying ? main : '#5C5D61'} />
-           </AudioButton>
-          )}
-        </QuizContainer>
-      ) : (
+      <QuizContainer $type={quiz_type}>
+        <QuizInfo>
+          <QuizNum>Quiz.{quiz_num}</QuizNum>
+          <QuizSector>{translateType(quiz_type)}</QuizSector>
+        </QuizInfo>
+        <Quiz>
+          {quiz_type === 'Listening Quiz'
+            ? '음성을 듣고 올바른 정답을 골라주세요.'
+            : question}
+        </Quiz>
+        {quiz_type === 'Listening Quiz' && (
+          <AudioButton $isPlaying={isPlaying} onClick={handlePlayAudio}>
+            <Volume stroke={isPlaying ? main : '#5C5D61'} />
+          </AudioButton>
+        )}
+      </QuizContainer>
+      {quiz_type === 'Voca Quiz' && (
         <WordQuizContainer>
-          {question}
+          {voca}
           <CardBackground style={{ position: 'absolute', top: 0, left: 0 }} />
         </WordQuizContainer>
       )}
-      {format === 'Multiple Choice' && (
-        <OptionContainer>
-          {options.map((v, id) => (
-            <Option
-              key={id}
-              $selected={userAnswer === String.fromCharCode(id + 65)}
-              onClick={() => handleClickAnswer(String.fromCharCode(id + 65))}
-            >
-              <OptionNum
+      {format === 'Multiple Choice' &&
+        (level === 'low' && quiz_type === 'Voca Quiz' ? (
+          <LowOptionContainer>
+            {options.map((v, id) => (
+              <LowOption
+                key={id}
                 $selected={userAnswer === String.fromCharCode(id + 65)}
+                onClick={() => handleClickAnswer(String.fromCharCode(id + 65))}
               >
-                {String.fromCharCode(id + 65)}
-              </OptionNum>
-              <OptionText>{v}</OptionText>
-            </Option>
-          ))}
-        </OptionContainer>
-      )}
+                <LowOptionNum
+                  $selected={userAnswer === String.fromCharCode(id + 65)}
+                >
+                  {String.fromCharCode(id + 65)}
+                </LowOptionNum>
+                <LowOptionText>{v}</LowOptionText>
+              </LowOption>
+            ))}
+          </LowOptionContainer>
+        ) : (
+          <OptionContainer>
+            {options.map((v, id) => (
+              <Option
+                key={id}
+                $selected={userAnswer === String.fromCharCode(id + 65)}
+                onClick={() => handleClickAnswer(String.fromCharCode(id + 65))}
+              >
+                <OptionNum
+                  $selected={userAnswer === String.fromCharCode(id + 65)}
+                >
+                  {String.fromCharCode(id + 65)}
+                </OptionNum>
+                <OptionText>{v}</OptionText>
+              </Option>
+            ))}
+          </OptionContainer>
+        ))}
       {format === 'True/False' && (
         <SelectContainer>
           <Select
@@ -157,12 +180,13 @@ const QuizItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-bottom: 16px;
 `;
 
 const QuizContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 217px;
+  aspect-ratio: 312 / ${(props) => (props.$type === 'Voca Quiz' ? 60 : 108)};
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;
@@ -211,7 +235,7 @@ const Quiz = styled.div`
 
 const WordQuizContainer = styled.div`
   width: 100%;
-  aspect-ratio: 312/217;
+  aspect-ratio: 312/140;
   border-radius: 16px;
   background: ${green};
   box-shadow: 0px 4px 14.7px 0px rgba(0, 0, 0, 0.17);
@@ -224,6 +248,45 @@ const WordQuizContainer = styled.div`
   align-items: center;
   position: relative;
   overflow: hidden;
+`;
+
+const LowOptionContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const LowOption = styled.div`
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+  background-color: ${(props) => (props.$selected ? '#E4F0FF' : 'white')};
+  border: ${(props) => props.$selected && `1px dashed ${blue}`};
+  position: relative;
+`;
+
+const LowOptionNum = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 300px;
+  background-color: ${(props) => (props.$selected ? blue : lightGray)};
+  color: ${(props) => props.$selected && 'white'};
+  font-size: 12px;
+`;
+
+const LowOptionText = styled.div`
+  font-size: 50px;
 `;
 
 const OptionContainer = styled.div`
