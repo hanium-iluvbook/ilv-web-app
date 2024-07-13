@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { wordList } from '../../dummy/wordList';
 import CardItem from './CardItem';
 import { gray, green } from '../../constants/colors';
 
-function CardBox() {
-  const [word, setWord] = useState(wordList);
-
+function CardBox({ word }) {
   const [positionId, setPositionId] = useState(0);
   const [pageId, setPageId] = useState(0);
   const [isAnimate, setIsAnimate] = useState(true);

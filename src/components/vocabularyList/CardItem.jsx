@@ -33,7 +33,7 @@ function CardItem({
     >
       <CardItemContainer $visible={visible} $isFlipped={isFlipped}>
         <FrontCard $visible={visible} $isFlipped={isFlipped}>
-          <Word>{word.word}</Word>
+          <Word>{word.voca}</Word>
           <CardBackground
             width={visible ? visibleCard : nonVisibleCard}
             style={{
@@ -45,7 +45,7 @@ function CardItem({
           />
         </FrontCard>
         <FlippedCard $visible={visible} $isFlipped={isFlipped}>
-          <Word>{word.mean}</Word>
+          <Word>{word.translation}</Word>
           <CardBackground
             width={visible ? visibleCard : nonVisibleCard}
             style={{

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { blue } from '../../constants/colors';
 
-function Title() {
+function Title({ title }) {
   return (
     <TitleContainer>
       <TitleText>Title</TitleText>
-      <div>The dog and His bone The dog and His bone</div>
+      <div>{title}</div>
     </TitleContainer>
   );
 }
