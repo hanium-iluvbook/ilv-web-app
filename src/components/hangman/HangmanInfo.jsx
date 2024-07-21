@@ -107,9 +107,9 @@ const StickerContainer = styled.div`
 
 const StyledSticker = styled(Sticker)`
   position: absolute;
-  left: 0;
-  top: 0;
-  box-shadow: 0px 4.223px 4.223px 0px rgba(0, 0, 0, 0.25);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const StickerText = styled.div`
@@ -120,6 +120,7 @@ const StickerText = styled.div`
   color: white;
   z-index: 3;
   transform: rotate(27.466deg);
+  text-align: center;
 `;
 
 export default HangmanInfo;

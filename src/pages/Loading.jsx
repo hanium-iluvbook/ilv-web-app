@@ -52,18 +52,42 @@ function Loading() {
     });
   };
 
+  const getOptionalFairytale = () => {
+    const url = `${process.env.REACT_APP_BASE_URL_FAIRYTALE}/game/select`;
+    const data = {
+      keywords,
+      fairytale: '',
+    };
+
+    return axios({
+      url,
+      method: 'POST',
+      data,
+    });
+  };
+
   useEffect(() => {
     getHangmanWord()
       .then(function (response) {
         setHint(response.data.hint);
         setAnswer(response.data.word.toUpperCase());
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    getFairytale()
-      .then(function (response) {
-        setFairytale(response.data);
+        if (isProVersion) {
+          getOptionalFairytale()
+            .then(function (response) {
+              setFairytale(response.data);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else {
+          getFairytale()
+            .then(function (response) {
+              setFairytale(response.data);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -84,13 +108,24 @@ function Loading() {
   };
 
   const handleClickGoFairytale = () => {
-    navigate('/fairytale', {
-      state: {
-        fairytale,
-        keywords,
-        difficulty,
-      },
-    });
+    setFailCount(0);
+    setIsFinish(false);
+    if (isProVersion) {
+      navigate('/optionalFairytale', {
+        state: {
+          fairytale,
+          keywords,
+        },
+      });
+    } else {
+      navigate('/fairytale', {
+        state: {
+          fairytale,
+          keywords,
+          difficulty,
+        },
+      });
+    }
   };
 
   return (
@@ -114,11 +149,12 @@ function Loading() {
             <FairytaleCard type="game" />
             <LoadingText />
             <Button
-              text="Start Game!"
               backgroundColor={darkMain}
               onClick={handleClickStartGame}
               font={'Jalnan'}
-            />
+            >
+              Start Game!
+            </Button>
           </LoadingContainer>
         ) : !isFinish ? (
           <LoadingContainer>
@@ -128,26 +164,25 @@ function Loading() {
             <AlphabetBox />
             {fairytale && (
               <Button
-                text="동화책 보러가기"
                 backgroundColor={darkMain}
                 onClick={handleClickGoFairytale}
-              />
+              >
+                동화책 보러가기
+              </Button>
             )}
           </LoadingContainer>
         ) : !fairytale ? (
           <LoadingContainer>
             <FairytaleCard />
             <LoadingText />
-            <Button text="취소하기" backgroundColor={lightGray} />
+            <Button backgroundColor={lightGray}>취소하기</Button>
           </LoadingContainer>
         ) : (
           <LoadingContainer>
             <LoadingFinish />
-            <Button
-              text="동화책 보러가기"
-              backgroundColor={darkMain}
-              onClick={handleClickGoFairytale}
-            />
+            <Button backgroundColor={darkMain} onClick={handleClickGoFairytale}>
+              동화책 보러가기
+            </Button>
           </LoadingContainer>
         )}
       </Layout>

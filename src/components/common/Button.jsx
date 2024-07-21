@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { darkGray, lightGray } from '../../constants/colors';
 
-function Button({ text, backgroundColor, onClick, font }) {
+function Button({ children, backgroundColor, onClick, font }) {
   return (
     <ButtonContainer
       onClick={onClick}
       $backgroundColor={backgroundColor}
       $font={font}
     >
-      {text}
+      {children}
     </ButtonContainer>
   );
 }
