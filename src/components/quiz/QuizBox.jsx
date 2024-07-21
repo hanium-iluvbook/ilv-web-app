@@ -5,7 +5,7 @@ import { blue, gray } from '../../constants/colors';
 import QuizItem from './QuizItem';
 import { useNavigate } from 'react-router-dom';
 
-function QuizBox() {
+function QuizBox({title}) {
   const { progress, setProgress, level, quizzes, resultInfo, setResultInfo } =
     useContext(QuizContext);
 
@@ -55,7 +55,7 @@ function QuizBox() {
     <QuizBoxContainer onSubmit={(e) => handleClickNextQuizBtn(e)}>
       <Title>
         <TitleLogo>Title</TitleLogo>
-        <TitleText>Hansel and Gretel Hansel and Gretel</TitleText>
+        <TitleText>{title}</TitleText>
       </Title>
       <QuizItem
         quiz_num={quizzes[progress].quiz_num}
