@@ -13,7 +13,7 @@ function CreateFairytale() {
             간단한 영어 단어로 동화를 만들어요
           </CreateFairytaleIntro>
         </div>
-        <Link to="/settingDifficulty">
+        <Link to="/createFairytale">
           <CreateFairytaleBtn>
             <Add stroke="white" />
             Make

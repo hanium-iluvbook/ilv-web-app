@@ -2,7 +2,15 @@ import styled from 'styled-components';
 import { ReactComponent as Play } from '../../assets/play.svg';
 import { Link } from 'react-router-dom';
 
-function Difficulty({ difficulty, title, info, border, background, color }) {
+function Difficulty({
+  difficulty,
+  title,
+  info,
+  border,
+  background,
+  color,
+  keywords,
+}) {
   return (
     <DifficultyContainer
       $border={border}
@@ -15,7 +23,7 @@ function Difficulty({ difficulty, title, info, border, background, color }) {
         <br />
         추천하는 난이도에요
       </DifficultyInfo>
-      <Link to="/createFairytale" state={{ difficulty: difficulty }}>
+      <Link to="/loading" state={{ isProVersion: false, difficulty, keywords }}>
         <StartBtn color={color}>
           시작하기
           <Play fill={color} />

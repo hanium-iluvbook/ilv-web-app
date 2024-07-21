@@ -8,9 +8,6 @@ import CreateOptionalFairytale from '../components/createFairytale/CreateOptiona
 import SelectKeywordsBox from '../components/createFairytale/SelectKeywordsBox';
 
 function CreateFairytale() {
-  const location = useLocation();
-  const difficulty = location.state?.difficulty;
-
   const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(false);
@@ -26,14 +23,22 @@ function CreateFairytale() {
   const handleClickCreateFairytaleBtn = (e) => {
     e.preventDefault();
     if (!isActive) return;
-    
-    navigate('/loading', {
-      state: {
-        difficulty,
-        isProVersion,
-        keywords: selectedInfo,
-      },
-    });
+
+
+    if (isProVersion) {
+      navigate('/loading', {
+        state: {
+          isProVersion,
+          keywords: selectedInfo,
+        },
+      });
+    } else {
+      navigate('/settingDifficulty', {
+        state: {
+          keywords: selectedInfo,
+        },
+      });
+    }
   };
 
   return (

@@ -9,8 +9,12 @@ import {
 } from '../constants/colors';
 import Difficulty from '../components/settingDifficulty/Difficulty';
 import Layout from '../components/Layout';
+import { useLocation } from 'react-router-dom';
 
 function SettingDifficulty() {
+  const location = useLocation();
+  const { keywords } = location.state;
+
   const difficultyInfo = [
     {
       difficulty: 'low',
@@ -55,6 +59,7 @@ function SettingDifficulty() {
             border={difficulty.border}
             background={difficulty.background}
             color={difficulty.color}
+            keywords={keywords}
           />
         ))}
       </DifficultyBox>
