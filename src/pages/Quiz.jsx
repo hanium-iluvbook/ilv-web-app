@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 function Quiz() {
   const location = useLocation();
-  const { quizzes, level } = location.state;
+  const { quizzes, level, title } = location.state;
 
   const [progress, setProgress] = useState(0);
   const [resultInfo, setResultInfo] = useState([]);
@@ -26,7 +26,7 @@ function Quiz() {
     >
       <Layout backgroundColor={backgroundGray} color={lightBlack} title="퀴즈">
         <ProgressBar />
-        {quizzes && <QuizBox />}
+        {quizzes && <QuizBox title={title} />}
       </Layout>
     </QuizContext.Provider>
   );
