@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as Crown } from '../../assets/crown.svg';
 import { ReactComponent as Book } from '../../assets/book.svg';
-import { useState } from 'react';
 import { gray, lightGray } from '../../constants/colors';
 
 function CreateOptionalFairytale({ isProVersion, setIsProVersion }) {
