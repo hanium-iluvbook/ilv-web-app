@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { darkGray, lightBlack, lightGray } from '../constants/colors';
 import { ReactComponent as Add } from '../assets/add.svg';

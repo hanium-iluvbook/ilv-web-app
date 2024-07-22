@@ -14,14 +14,18 @@ import { useNavigate } from 'react-router-dom';
 function BottomNavigation() {
   const navigate = useNavigate();
 
+  const handleClickRetry = () => {
+    navigate(-2);
+  };
+
   const handleClickHome = () => {
     navigate('/');
   };
 
   return (
     <BottomNavigationContainer>
-      <RetryButton>
-        <Refresh />
+      <RetryButton onClick={handleClickRetry}>
+        <Refresh style={{ cursor: 'pointer' }} />
         다시 풀기
       </RetryButton>
       <Button backgroundColor={blue} onClick={handleClickHome}>
@@ -60,6 +64,7 @@ const RetryButton = styled.div`
   font-size: 12px;
   font-weight: 500;
   line-height: 13px;
+  cursor: pointer;
 `;
 
 export default BottomNavigation;

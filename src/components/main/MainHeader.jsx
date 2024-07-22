@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+import profile from '../../dummy/profile.png';
+import { Link } from 'react-router-dom';
 
 function MainHeader() {
   return (
     <MainHeaderContainer>
       <Header>
         <Logo />
-        응애
+        <Link to={'/myBadge'}><Profile src={profile} /></Link>
       </Header>
     </MainHeaderContainer>
   );
@@ -30,6 +32,14 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
+
+const Profile = styled.img`
+  width: 42px;
+  height: 42px;
+  border-radius: 300px;
+  object-fit: cover;
+  cursor: pointer;
+`;
 
 export default MainHeader;

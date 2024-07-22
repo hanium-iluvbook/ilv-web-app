@@ -40,7 +40,7 @@ function QuizResultInfo({ totalCount, correctCount, grade }) {
           </Instruction>
         </ResultText>
         <RetryBtn onClick={handleClickRetryBtn}>
-          <Refrash />
+          <Refrash style={{cursor: 'pointer'}}/>
           다시풀기
         </RetryBtn>
       </ResultTextInfo>
@@ -108,6 +108,7 @@ const RetryBtn = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
+  cursor: pointer;
 `;
 
 export default QuizResultInfo;

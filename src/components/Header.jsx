@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 import { ReactComponent as Before } from '../assets/before.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { lightBlack } from '../constants/colors';
 
 function Header({ backgroundColor, color, title, padding }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClickBeforeBtn = () => {
-    navigate(-1);
+    if (
+      location.pathname === '/fairytale' ||
+      location.pathname === '/optionalFairytale'
+    ) {
+      navigate('/');
+    } else {
+      navigate(-1);
+    }
   };
 
   return (
@@ -46,7 +54,7 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 500;
   line-height: 21px;
-  color: ${(props) => props.color === 'white' ? 'white' : lightBlack };
+  color: ${(props) => (props.color === 'white' ? 'white' : lightBlack)};
 `;
 
 export default Header;

@@ -101,7 +101,6 @@ function ReadingHelper({
   };
 
   useEffect(() => {
-    console.log(audioContent);
     if (isPlaying && audioContent[page]) {
       audioContent[page].play();
       audioContent[page].onended = () => {

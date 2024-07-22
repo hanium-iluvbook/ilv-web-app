@@ -21,11 +21,14 @@ import axios from 'axios';
 
 function Loading() {
   const location = useLocation();
-  const { difficulty, isProVersion, keywords } = location.state;
+
+  const difficulty = location.state?.difficulty;
+  const isProVersion = location.state?.isProVersion;
+  const keywords = location.state?.keywords;
 
   const navigate = useNavigate();
 
-  const [fairytale, setFairytale] = useState(false);
+  const [fairytale, setFairytale] = useState();
 
   const getHangmanWord = () => {
     const url = process.env.REACT_APP_BASE_URL_HANGMAN;
@@ -67,7 +70,10 @@ function Loading() {
   };
 
   useEffect(() => {
-    getHangmanWord()
+    if (!location.state) {
+      navigate('/createFairytale');
+    } else {
+      getHangmanWord()
       .then(function (response) {
         setHint(response.data.hint);
         setAnswer(response.data.word.toUpperCase());
@@ -92,6 +98,7 @@ function Loading() {
       .catch(function (error) {
         console.log(error);
       });
+    }
   }, []);
 
   const [isStart, setIsStart] = useState(false);

@@ -32,7 +32,7 @@ function Content({ displayWidth, contents, page, setPage }) {
           {contents[page].content.split('.').map(
             (s, id) =>
               s && (
-                <TextContainer>
+                <TextContainer key={id}>
                   <FairytaleText>{s}.</FairytaleText>
                   {translateText[page] && (
                     <TranslateText>

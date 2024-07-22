@@ -6,7 +6,10 @@ function VocaQuizCard({ voca }) {
   return (
     <VocaQuizContainer>
       {voca}
-      <CardBackground style={{ position: 'absolute', top: 0, left: 0 }} />
+      <CardBackground
+        width={'100%'}
+        style={{ position: 'absolute', top: 0, left: 0 }}
+      />
     </VocaQuizContainer>
   );
 }

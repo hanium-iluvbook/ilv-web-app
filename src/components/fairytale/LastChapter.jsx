@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ReactComponent as Technologist } from '../../assets/Technologist.svg';
 
-function LastChapter({ page, setPage, level, title, content, fairytale }) {
+function LastChapter({ page, setPage, level, title, content, fairytale, audioContent }) {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -121,9 +121,9 @@ function LastChapter({ page, setPage, level, title, content, fairytale }) {
         />
       </ReviewBox>
       {page > 3 ? (
-        <OptionalTools page={page} setPage={setPage} fairytale={fairytale} />
+        <OptionalTools page={page} setPage={setPage} fairytale={fairytale} audioContent={audioContent} />
       ) : (
-        <Tools page={page} setPage={setPage} />
+        <Tools page={page} setPage={setPage} audioContent={audioContent}/>
       )}
       {isLoading && (
         <LoadingContainer>

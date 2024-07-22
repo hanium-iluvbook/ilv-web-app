@@ -13,7 +13,8 @@ function Options({
   setFairytale,
   keywords,
   selectedOptions,
-  setSelectedOptions
+  setSelectedOptions,
+  audioContent,
 }) {
   const [selected, setSelected] = useState(false);
 
@@ -44,6 +45,7 @@ function Options({
         keywords={keywords}
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
+        audioContent={audioContent}
       />
     </OptionsContainer>
   );

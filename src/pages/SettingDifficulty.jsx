@@ -9,11 +9,22 @@ import {
 } from '../constants/colors';
 import Difficulty from '../components/settingDifficulty/Difficulty';
 import Layout from '../components/Layout';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function SettingDifficulty() {
   const location = useLocation();
-  const { keywords } = location.state;
+  const [keywords, setKeywords] = useState();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.state) {
+      setKeywords(location.state.keywords);
+    } else {
+      navigate('/createFairytale');
+    }
+  }, []);
 
   const difficultyInfo = [
     {

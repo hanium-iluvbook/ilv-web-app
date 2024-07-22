@@ -39,6 +39,10 @@ function OptionalFairytale() {
     };
   }, []);
 
+  const [translateText, setTranslateText] = useState(new Array(4).fill(0));
+  const [audioContent, setAudioContent] = useState(new Array(4).fill(0));
+  const [text, setText] = useState(new Array(4).fill(0));
+
   return !isReading ? (
     <Layout backgroundColor="transparent" color="white" padding={0}>
       {fairytale[page / 2] && keywords && (
@@ -65,9 +69,13 @@ function OptionalFairytale() {
           page={page}
           setPage={setPage}
           fairytale={fairytale}
-          content={fairytale[page / 2].content}
-          imgUrl={fairytale[page / 2].imgURL}
           selectedOptions={selectedOptions}
+          translateText={translateText}
+          setTranslateText={setTranslateText}
+          audioContent={audioContent}
+          setAudioContent={setAudioContent}
+          text={text}
+          setText={setText}
         />
       </Layout>
     ) : (
@@ -86,6 +94,7 @@ function OptionalFairytale() {
           keywords={keywords}
           selectedOptions={selectedOptions}
           setSelectedOptions={setSelectedOptions}
+          audioContent={audioContent}
         />
       </Layout>
     )
@@ -103,6 +112,7 @@ function OptionalFairytale() {
         title={fairytale[0].title}
         content={fairytale.map((f) => f.content).join('')}
         fairytale={fairytale}
+        audioContent={audioContent}
       />
     </Layout>
   );

@@ -25,7 +25,6 @@ function Tools({
 
   useEffect(() => {
     setIsPlaying(false);
-    console.log(audioContent)
     if (audioContent) {
       audioContent.forEach((audio) => {
         if (audio) {

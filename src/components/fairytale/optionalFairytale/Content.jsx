@@ -7,30 +7,34 @@ import { ReactComponent as Chevron } from '../../../assets/chevron.svg';
 function Content({
   displayWidth,
   fairytale,
-  content,
-  imgUrl,
   page,
   setPage,
   selectedOptions,
+  translateText,
+  setTranslateText,
+  audioContent,
+  setAudioContent,
+  text,
+  setText,
 }) {
-  // content, imgUrl 없앨 수 있을 듯
   const [isTranslate, setIsTranslate] = useState(true);
-  const [translateText, setTranslateText] = useState(new Array(4).fill(0));
-  const [audioContent, setAudioContent] = useState(new Array(4).fill(0));
-  const [text, setText] = useState(new Array(4).fill(0));
   const [isOpening, setIsOpening] = useState(false);
 
   const handleClickAccordion = () => {
     setIsOpening((prev) => !prev);
   };
 
-  // console.log(fairytale[page / 2]);
-  // page: 2 -> fairytale: 1 -> selectedOptions: 0
-  // page: 4 -> fairytale: 2 -> selectedOptions: 1
+  const [content, setContent] = useState(fairytale[page / 2].content);
+  const [imgUrl, setImgUrl] = useState(fairytale[page / 2].imgURL);
 
   useEffect(() => {
     setIsTranslate(false);
     setIsOpening(false);
+    setContent(fairytale[page / 2].content);
+    setImgUrl(fairytale[page / 2].imgURL);
+  }, [page]);
+
+  useEffect(() => {
     // 페이지 변경 시, 해당 페이지에 이모티콘 제외 텍스트가 없는 경우
     if (page % 2 === 0 && !text[page / 2]) {
       const newText = [...text];
@@ -40,7 +44,7 @@ function Content({
       );
       setText(newText);
     }
-  }, [page]);
+  }, [content]);
 
   return (
     <ContentContainer>
