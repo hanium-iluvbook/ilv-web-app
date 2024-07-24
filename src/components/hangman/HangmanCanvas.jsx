@@ -84,6 +84,7 @@ function HangmanCanvas() {
                 setTimeout(() => {
                   setFailCount(0);
                   setCorrectAlphabets([]);
+                  resetCanvas();
                 }, 2000);
               }
             }

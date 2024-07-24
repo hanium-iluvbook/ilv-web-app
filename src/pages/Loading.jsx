@@ -74,30 +74,30 @@ function Loading() {
       navigate('/createFairytale');
     } else {
       getHangmanWord()
-      .then(function (response) {
-        setHint(response.data.hint);
-        setAnswer(response.data.word.toUpperCase());
-        if (isProVersion) {
-          getOptionalFairytale()
-            .then(function (response) {
-              setFairytale(response.data);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        } else {
-          getFairytale()
-            .then(function (response) {
-              setFairytale(response.data);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+          setHint(response.data.hint);
+          setAnswer(response.data.word.toUpperCase());
+          if (isProVersion) {
+            getOptionalFairytale()
+              .then(function (response) {
+                setFairytale(response.data);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          } else {
+            getFairytale()
+              .then(function (response) {
+                setFairytale(response.data);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }, []);
 
@@ -111,6 +111,7 @@ function Loading() {
   const [isFinish, setIsFinish] = useState(false);
 
   const handleClickStartGame = () => {
+    if (!hint || !answer) return;
     setIsStart(true);
   };
 
@@ -156,7 +157,7 @@ function Loading() {
             <FairytaleCard type="game" />
             <LoadingText />
             <Button
-              backgroundColor={darkMain}
+              backgroundColor={!hint || !answer ? lightGray : darkMain}
               onClick={handleClickStartGame}
               font={'Jalnan'}
             >
