@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { ReactComponent as Play } from '../../assets/play.svg';
 import { Link } from 'react-router-dom';
+import difficultyYellow from '../../assets/difficultyYellow.png';
+import difficultyGreen from '../../assets/difficultyGreen.png';
+import difficultyRed from '../../assets/difficultyRed.png';
+import { ReactComponent as RabbitBaby } from '../../assets/rabbitBaby.svg';
+import { ReactComponent as RabbitLower } from '../../assets/rabbitLower.svg';
+import { ReactComponent as RabbitUpper } from '../../assets/RabbitUpper.svg';
 
 function Difficulty({
   difficulty,
@@ -15,20 +21,34 @@ function Difficulty({
     <DifficultyContainer
       $border={border}
       $background={background}
+      $title={title}
       color={color}
     >
-      <DifficultyTitle>{title}</DifficultyTitle>
-      <DifficultyInfo>
-        {info}
-        <br />
-        추천하는 난이도에요
-      </DifficultyInfo>
-      <Link to="/loading" state={{ isProVersion: false, difficulty, keywords }}>
-        <StartBtn color={color}>
-          시작하기
-          <Play fill={color} />
-        </StartBtn>
-      </Link>
+      <Content>
+        <DifficultyTitle>{title}</DifficultyTitle>
+        <DifficultyInfo>
+          {info}
+          <br />
+          추천하는 난이도에요
+        </DifficultyInfo>
+        <Link
+          to="/loading"
+          state={{ isProVersion: false, difficulty, keywords }}
+        >
+          <StartBtn color={color}>
+            시작하기
+            <Play fill={color} />
+          </StartBtn>
+        </Link>
+      </Content>
+
+      {title === '영유아' ? (
+        <RabbitBaby style={{ position: 'absolute', top: 0, right: 0 }} />
+      ) : title === '초등학교 저학년' ? (
+        <RabbitLower style={{ position: 'absolute', top: 0, right: 0 }} />
+      ) : (
+        <RabbitUpper style={{ position: 'absolute', top: 0, right: 0 }} />
+      )}
     </DifficultyContainer>
   );
 }
@@ -42,6 +62,19 @@ const DifficultyContainer = styled.div`
   background: ${(props) => props.$background};
   box-shadow: 0px 4px 36.1px 0px rgba(106, 106, 255, 0.17);
   padding: 0px 18px;
+  background-repeat: no-repeat;
+  position: relative;
+  background-image: url(${(props) =>
+    props.$title === '영유아'
+      ? difficultyYellow
+      : props.$title === '초등학교 저학년'
+      ? difficultyGreen
+      : difficultyRed});
+`;
+
+const Content = styled.div`
+  position: absolute;
+  z-index: 2;
 `;
 
 const DifficultyTitle = styled.div`

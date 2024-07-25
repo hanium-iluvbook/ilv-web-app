@@ -131,9 +131,9 @@ const BookContainer = styled.div`
 
 const BookItem = styled.div`
   position: absolute;
-  top: calc(110px - 5vw);
+  top: calc(110px - 3vw);
   left: 0;
-  padding: 0 12vw;
+  padding: 0 11vw;
   display: flex;
   flex-direction: column;
   gap: 10px;

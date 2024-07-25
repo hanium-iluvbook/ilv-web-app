@@ -1,0 +1,157 @@
+<svg width="181" height="188" viewBox="0 0 181 188" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M19.7204 137.414C26.37 136.926 33.3312 140.065 34.7726 140.756C34.957 140.845 35.1078 140.919 35.2904 141.011C42.3501 144.58 85.6966 173.075 85.6966 173.075L72.8774 189.793C72.8774 189.793 58.3032 183.137 50.981 180.152C45.6573 177.981 40.1103 176.013 34.6005 174.364C28.8597 172.646 22.669 171.704 17.1843 169.391C16.468 169.089 15.6889 168.685 14.8859 168.22C8.58645 164.567 5.21703 157.83 5.92668 150.583C6.77186 141.952 12.2554 137.961 19.7204 137.414Z"
+        fill="url(#paint0_linear_3701_14709)" />
+    <ellipse cx="57.5585" cy="58.7213" rx="57.5585" ry="58.7213"
+        transform="matrix(-0.954554 0.298039 0.298039 0.954554 161.729 131.184)" fill="#FFED89" />
+    <path
+        d="M130.119 37.0536C135.587 21.6724 126.774 4.89664 111.006 0.671592V0.671592C95.0754 -3.59698 78.9294 6.7759 76.1894 23.0392L62.1847 106.166L101.777 116.775L130.119 37.0536Z"
+        fill="url(#paint1_linear_3701_14709)" />
+    <path
+        d="M31.6628 111.764C11.4318 148.061 43.1331 172.068 96.6769 169.179C137.48 169.179 170.557 143.473 170.557 111.764C170.557 62.37 137.48 54.3488 96.6769 54.3488C44.1011 50.9098 25.1076 78.1397 31.6628 111.764Z"
+        fill="#FFED89" />
+    <path
+        d="M175.607 45.4974C181.075 30.1162 172.262 13.3405 156.494 9.11544V9.11544C140.564 4.84687 124.418 15.2197 121.678 31.483L107.673 114.61L147.265 125.218L175.607 45.4974Z"
+        fill="#FFED89" />
+    <g filter="url(#filter0_f_3701_14709)">
+        <ellipse cx="43" cy="124.184" rx="11" ry="12" fill="#FFD0D0" />
+    </g>
+    <g clipPath="url(#clip0_3701_14709)">
+        <rect width="36.3066" height="41.3726" rx="18.1533"
+            transform="matrix(-1 0 0 1 75.1465 80.5225)" fill="white" />
+        <ellipse cx="13.0873" cy="19.842" rx="13.0873" ry="19.842"
+            transform="matrix(-1 0 0 1 64.1699 81.3672)" fill="#3A312C" />
+        <mask id="mask0_3701_14709" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="37" y="81"
+            width="28" height="41">
+            <ellipse cx="13.0873" cy="19.842" rx="13.0873" ry="19.842"
+                transform="matrix(-1 0 0 1 64.1699 81.3672)" fill="black" />
+        </mask>
+        <g mask="url(#mask0_3701_14709)">
+            <path
+                d="M64.169 114.937L39.0432 89.8108L22.3262 106.528L47.4519 131.654L64.169 114.937Z"
+                fill="url(#paint2_linear_3701_14709)" fillOpacity="0.58" />
+        </g>
+    </g>
+    <path
+        d="M59.154 125.259C58.4128 132.914 65.9958 138.377 75.5936 137.91C84.6729 137.91 92.0332 132.246 92.0332 125.259C92.0332 118.272 84.6729 113.875 75.5936 113.875C66.5143 113.875 59.154 118.272 59.154 125.259Z"
+        fill="#FFED89" />
+    <path d="M70.9238 115.398C66.28 114.554 57.921 115.314 61.6361 125.108" stroke="#F6A444"
+        strokeWidth="2.53302" strokeLinecap="round" />
+    <g filter="url(#filter1_f_3701_14709)">
+        <circle cx="118.5" cy="123.684" r="14.5" fill="#FFD0D0" />
+    </g>
+    <g clipPath="url(#clip1_3701_14709)">
+        <rect width="36.3066" height="41.3726" rx="18.1533"
+            transform="matrix(-1 0 0 1 118.207 80.5225)" fill="white" />
+        <ellipse cx="13.0873" cy="19.842" rx="13.0873" ry="19.842"
+            transform="matrix(-1 0 0 1 107.23 81.3672)" fill="#3A312C" />
+        <mask id="mask1_3701_14709" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="81" y="81"
+            width="27" height="41">
+            <ellipse cx="13.0873" cy="19.842" rx="13.0873" ry="19.842"
+                transform="matrix(-1 0 0 1 107.23 81.3672)" fill="black" />
+        </mask>
+        <g mask="url(#mask1_3701_14709)">
+            <path
+                d="M107.232 114.937L82.1057 89.8108L65.3887 106.528L90.5144 131.654L107.232 114.937Z"
+                fill="url(#paint3_linear_3701_14709)" fillOpacity="0.58" />
+        </g>
+    </g>
+    <path d="M84.4336 128.492C84.2929 131.307 81.394 136.091 70.9242 132.714" stroke="#F6A444"
+        strokeWidth="2.53302" strokeLinecap="round" />
+    <ellipse cx="5.48821" cy="3.79953" rx="5.48821" ry="3.79953"
+        transform="matrix(-1 0 0 1 74.3027 117.509)" fill="#F6A444" />
+    <path
+        d="M161.5 157C140.134 172.2 95.824 172.5 76.8434 171C75.3319 173 73.5947 174.378 74.3241 175.5C107.539 226.577 148.022 184.724 161.5 157Z"
+        fill="#FFE44C" />
+    <path
+        d="M161.5 155C140.3 170.2 96.3336 170.5 77.5003 169C76.0005 171 74.2767 172.378 75.0005 173.5C107.957 224.577 148.127 182.724 161.5 155Z"
+        fill="white" />
+    <mask id="mask2_3701_14709" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="74" y="155"
+        width="88" height="43">
+        <path
+            d="M161.5 155C140.3 170.2 96.3336 170.5 77.5003 169C76.0005 171 74.2767 172.378 75.0005 173.5C107.957 224.577 148.127 182.724 161.5 155Z"
+            fill="white" />
+    </mask>
+    <g mask="url(#mask2_3701_14709)">
+        <circle cx="84.3" cy="178.926" r="2.24727" fill="#FFD0D0" />
+        <circle cx="86.548" cy="181.173" r="2.24727" fill="#FFD0D0" />
+        <circle cx="84.3" cy="183.42" r="2.24727" fill="#FFD0D0" />
+        <circle cx="82.0539" cy="181.173" r="2.24727" fill="#FFD0D0" />
+        <circle cx="1.48574" cy="1.48574" r="1.48574" transform="matrix(1 0 0 -1 82.8145 182.659)"
+            fill="#FFFA76" />
+        <circle cx="100.657" cy="168.286" r="2.24727" fill="#FFD0D0" />
+        <circle cx="102.905" cy="170.533" r="2.24727" fill="#FFD0D0" />
+        <circle cx="100.657" cy="172.781" r="2.24727" fill="#FFD0D0" />
+        <circle cx="98.4113" cy="170.533" r="2.24727" fill="#FFD0D0" />
+        <circle cx="1.48574" cy="1.48574" r="1.48574" transform="matrix(1 0 0 -1 99.1719 172.02)"
+            fill="#FFFA76" />
+        <circle cx="110.091" cy="187.354" r="2.24727" fill="#FFD0D0" />
+        <circle cx="112.339" cy="189.601" r="2.24727" fill="#FFD0D0" />
+        <circle cx="107.843" cy="189.601" r="2.24727" fill="#FFD0D0" />
+        <circle cx="130.316" cy="188.442" r="2.24727" fill="#FFD0D0" />
+        <circle cx="150.38" cy="189.719" r="2.24727" fill="#FFD0D0" />
+        <circle cx="158.626" cy="166.039" r="2.24727" fill="#FFD0D0" />
+        <circle cx="160.874" cy="168.286" r="2.24727" fill="#FFD0D0" />
+        <circle cx="158.626" cy="170.533" r="2.24727" fill="#FFD0D0" />
+        <circle cx="156.38" cy="168.286" r="2.24727" fill="#FFD0D0" />
+        <circle cx="1.48574" cy="1.48574" r="1.48574" transform="matrix(1 0 0 -1 157.141 169.772)"
+            fill="#FFFA76" />
+        <circle cx="123.142" cy="172.043" r="2.24727" fill="#FFD0D0" />
+        <circle cx="125.39" cy="174.29" r="2.24727" fill="#FFD0D0" />
+        <circle cx="123.142" cy="176.537" r="2.24727" fill="#FFD0D0" />
+        <circle cx="120.896" cy="174.29" r="2.24727" fill="#FFD0D0" />
+        <circle cx="1.48574" cy="1.48574" r="1.48574" transform="matrix(1 0 0 -1 121.656 175.775)"
+            fill="#FFFA76" />
+        <circle cx="145.142" cy="170.043" r="2.24727" fill="#FFD0D0" />
+        <circle cx="147.39" cy="172.29" r="2.24727" fill="#FFD0D0" />
+        <circle cx="145.142" cy="174.537" r="2.24727" fill="#FFD0D0" />
+        <circle cx="142.896" cy="172.29" r="2.24727" fill="#FFD0D0" />
+        <circle cx="1.48574" cy="1.48574" r="1.48574" transform="matrix(1 0 0 -1 143.656 173.775)"
+            fill="#FFFA76" />
+    </g>
+    <path
+        d="M139.969 125.536C148.961 124.876 158.382 129.199 160.091 130.027C160.276 130.116 160.426 130.19 160.609 130.281C169.733 134.84 227.793 173.006 227.793 173.006L210.729 195.26C210.729 195.26 191.328 186.4 181.581 182.426C174.495 179.537 167.111 176.917 159.776 174.722C152.135 172.435 143.894 171.182 136.593 168.103C135.639 167.701 134.602 167.163 133.533 166.543C125.148 161.68 120.663 152.713 121.607 143.066C122.732 131.576 130.032 126.265 139.969 125.536Z"
+        fill="#FFE55F" />
+    <defs>
+        <filter id="filter0_f_3701_14709" x="6.9" y="87.0841" width="72.2" height="74.2"
+            filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="12.55" result="effect1_foregroundBlur_3701_14709" />
+        </filter>
+        <filter id="filter1_f_3701_14709" x="78.9" y="84.0841" width="79.2" height="79.2"
+            filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="12.55" result="effect1_foregroundBlur_3701_14709" />
+        </filter>
+        <linearGradient id="paint0_linear_3701_14709" x1="83.3151" y1="155.151" x2="52.4172"
+            y2="194.756" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#FFE55F" stopOpacity="0" />
+            <stop offset="0.814198" stopColor="#FFE55F" />
+        </linearGradient>
+        <linearGradient id="paint1_linear_3701_14709" x1="82.9438" y1="-10.473" x2="131.492"
+            y2="100.87" gradientUnits="userSpaceOnUse">
+            <stop offset="0.30837" stopColor="#FFE55F" />
+            <stop offset="1" stopColor="#FFE55F" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="paint2_linear_3701_14709" x1="34.8891" y1="119.091" x2="51.6061"
+            y2="102.374" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#D9D9D9" stopOpacity="0" />
+            <stop offset="1" stopColor="#4F4F4F" />
+        </linearGradient>
+        <linearGradient id="paint3_linear_3701_14709" x1="77.9516" y1="119.091" x2="94.6686"
+            y2="102.374" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#D9D9D9" stopOpacity="0" />
+            <stop offset="1" stopColor="#4F4F4F" />
+        </linearGradient>
+        <clipPath id="clip0_3701_14709">
+            <rect width="36.3066" height="41.3726" rx="18.1533"
+                transform="matrix(-1 0 0 1 75.1465 80.5225)" fill="white" />
+        </clipPath>
+        <clipPath id="clip1_3701_14709">
+            <rect width="36.3066" height="41.3726" rx="18.1533"
+                transform="matrix(-1 0 0 1 118.207 80.5225)" fill="white" />
+        </clipPath>
+    </defs>
+</svg>
