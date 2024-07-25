@@ -28,7 +28,12 @@ function Fairytale() {
   }, []);
 
   return !isReading ? (
-    <Layout backgroundColor="transparent" color='white' padding={0}>
+    <Layout
+      backgroundColor="transparent"
+      color="white"
+      padding={0}
+      isFairytale={true}
+    >
       {fairytale && keywords && (
         <Intro
           displayWidth={displayWidth}
@@ -46,6 +51,7 @@ function Fairytale() {
       color="white"
       title={fairytale.title}
       padding={0}
+      isFairytale={true}
     >
       <Content
         displayWidth={displayWidth}
@@ -60,6 +66,7 @@ function Fairytale() {
       color={lightBlack}
       title={fairytale.title}
       padding={0}
+      isFairytale={true}
     >
       <LastChapter
         page={page}

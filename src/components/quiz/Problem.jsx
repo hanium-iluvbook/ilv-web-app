@@ -90,7 +90,7 @@ function Problem({ quiz_num, quiz_type, question, voca }) {
 const ProblemContainer = styled.div`
   display: flex;
   width: 100%;
-  aspect-ratio: 312 / ${(props) => (props.$type === 'Voca Quiz' ? 60 : 108)};
+  aspect-ratio: 312 / ${(props) => (props.$type === 'Voca Quiz' ? 60 : 130)};
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;

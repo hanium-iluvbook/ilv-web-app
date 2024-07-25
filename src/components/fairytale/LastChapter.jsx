@@ -143,7 +143,7 @@ const LastChapterContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${(props) => props.$src});
   background-size: cover;
   display: flex;
@@ -155,7 +155,7 @@ const LastChapterContainer = styled.div`
 `;
 
 const RecommandText = styled.div`
-  padding-top: 110px;
+  padding-top: 90px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -169,7 +169,7 @@ const RecommandTextTitle = styled.div`
 `;
 
 const RecommandTextInfo = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 150%;
   color: ${darkGray};

@@ -39,6 +39,7 @@ const LoadingFinishTitle = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 30px;
+  width: max-content;
   color: ${lightBlack};
 `;
 
@@ -46,6 +47,7 @@ const LoadingFinishDes = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 160%;
+  width: max-content;
   color: ${darkGray};
 `;
 

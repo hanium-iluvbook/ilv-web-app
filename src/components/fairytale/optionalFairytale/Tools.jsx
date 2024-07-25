@@ -101,8 +101,8 @@ function Tools({
   };
 
   const handleClickSelectOption = () => {
-    // 로딩 중일 경우 선택형 동화 요청 비활성화
-    if (isLoading) return;
+    // 로딩 중이거나 선택한 것이 없는 경우 선택형 동화 요청 비활성화
+    if (isLoading || !selected) return;
 
     // 선택한 옵션 정보 상태, 로딩 상태 업데이트
     const newSelectedOptions = [...selectedOptions];
@@ -140,26 +140,26 @@ function Tools({
 
   return (
     <ToolsContainer>
-      <ToolsItem>
-        {page < 7 && page % 2 === 0 && (
-          <ReadingHelper
-            text={text}
-            page={page / 2}
-            translateText={translateText}
-            setTranslateText={setTranslateText}
-            audioContent={audioContent}
-            setAudioContent={setAudioContent}
-            isTranslate={isTranslate}
-            setIsTranslate={setIsTranslate}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-          />
-        )}
+      {page < 7 && page % 2 === 0 && (
+        <ReadingHelper
+          text={text}
+          page={page / 2}
+          translateText={translateText}
+          setTranslateText={setTranslateText}
+          audioContent={audioContent}
+          setAudioContent={setAudioContent}
+          isTranslate={isTranslate}
+          setIsTranslate={setIsTranslate}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+        />
+      )}
+      <PageTools>
         <PageNationBox>
           {new Array(8)
             .fill(0)
             .map((_, id) =>
-              (id % 2 === 0 || id === 7) ? (
+              id % 2 === 0 || id === 7 ? (
                 <PageNationItem key={id} $isNowPage={page === id} />
               ) : (
                 !fairytale[(id + 1) / 2] && (
@@ -168,41 +168,44 @@ function Tools({
               )
             )}
         </PageNationBox>
-      </ToolsItem>
-      <PageSwitcher>
-        {/** 로딩 */}
-        {isLoading && (
-          <LoadingContainer>
-            <LoadingSpinner />
-          </LoadingContainer>
-        )}
-        {/** 이전 페이지 버튼 */}
-        {page > 0 && (
-          <ToolButton width={48} onClick={handleClickBeforePageSwitcher}>
-            <Play fill={lightBlack} style={{ rotate: '180deg' }} />
-          </ToolButton>
-        )}
-        {/** 다음 페이지 버튼 */}
-        {page < 7 && page % 2 === 0 && (
-          <ToolButton width={48} onClick={handleClickNextPageSwitcher}>
-            <Play fill={lightBlack} />
-          </ToolButton>
-        )}
-        {/** 옵션 선택 버튼 */}
-        {page < 7 && page % 2 !== 0 && (
-          <SelectButton $selected={selected} onClick={handleClickSelectOption}>
-            선택 <Play fill={selected ? 'white' : gray} />
-          </SelectButton>
-        )}
-        {/** 나가기 버튼 */}
-        {page === 7 && (
-          <Link to="/">
-            <ExitButton>
-              Exit <Play fill="white" />
-            </ExitButton>
-          </Link>
-        )}
-      </PageSwitcher>
+        <PageSwitcher>
+          {/** 로딩 */}
+          {isLoading && (
+            <LoadingContainer>
+              <LoadingSpinner />
+            </LoadingContainer>
+          )}
+          {/** 이전 페이지 버튼 */}
+          {page > 0 && (
+            <ToolButton width={48} onClick={handleClickBeforePageSwitcher}>
+              <Play fill={lightBlack} style={{ rotate: '180deg' }} />
+            </ToolButton>
+          )}
+          {/** 다음 페이지 버튼 */}
+          {page < 7 && page % 2 === 0 && (
+            <ToolButton width={48} onClick={handleClickNextPageSwitcher}>
+              <Play fill={lightBlack} />
+            </ToolButton>
+          )}
+          {/** 옵션 선택 버튼 */}
+          {page < 7 && page % 2 !== 0 && (
+            <SelectButton
+              $selected={selected}
+              onClick={handleClickSelectOption}
+            >
+              선택 <Play fill={selected ? 'white' : gray} />
+            </SelectButton>
+          )}
+          {/** 나가기 버튼 */}
+          {page === 7 && (
+            <Link to="/">
+              <ExitButton>
+                Exit <Play fill="white" />
+              </ExitButton>
+            </Link>
+          )}
+        </PageSwitcher>
+      </PageTools>
     </ToolsContainer>
   );
 }
@@ -213,11 +216,17 @@ const ToolsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 0px;
+  gap: 10px;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
-const ToolsItem = styled.div`
+const PageTools = styled.div`
   display: flex;
-  gap: 16px;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
 `;
 

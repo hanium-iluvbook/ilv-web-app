@@ -15,11 +15,12 @@ function MainHeader() {
 }
 
 const MainHeaderContainer = styled.div`
-  width: 100vw;
-  height: 58px;
+  width: 100%;
+  height: 80px;
   padding: 8px 16px;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   background-color: white;
   position: fixed;
   top: 0;

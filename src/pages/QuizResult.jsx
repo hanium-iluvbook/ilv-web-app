@@ -93,6 +93,8 @@ function QuizResult() {
 
 const Background = styled.img`
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   top: -80px;
   position: absolute;
 `;

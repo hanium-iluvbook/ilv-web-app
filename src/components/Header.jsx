@@ -3,7 +3,7 @@ import { ReactComponent as Before } from '../assets/before.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { lightBlack } from '../constants/colors';
 
-function Header({ backgroundColor, color, title, padding }) {
+function Header({ backgroundColor, color, title, isFairytale }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,30 +23,36 @@ function Header({ backgroundColor, color, title, padding }) {
       <BeforeBtn onClick={handleClickBeforeBtn}>
         <Before stroke={color} />
       </BeforeBtn>
-      <Title color={color}>{title}</Title>
+      <Title color={color} $isFairytale={isFairytale}>
+        {title}
+      </Title>
     </HeaderContainer>
   );
 }
 
 const HeaderContainer = styled.div`
-  width: 100%;
-  height: 52px;
+  width: 600px;
+  height: 60px;
   display: flex;
   flex-direction: row;
-  padding: 20px 16px 0px 16px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.$backgroundColor};
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const BeforeBtn = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 20px;
+  top: 50%;
+  transform: translate(0, -50%);
   left: 16px;
 `;
 
@@ -55,6 +61,11 @@ const Title = styled.div`
   font-weight: 500;
   line-height: 21px;
   color: ${(props) => (props.color === 'white' ? 'white' : lightBlack)};
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  ${(props) => props.$isFairytale && { width: '70%' }}
 `;
 
 export default Header;

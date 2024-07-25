@@ -45,7 +45,14 @@ function Content({ displayWidth, contents, page, setPage }) {
         </FairytaleTextContainer>
       ) : (
         <FairytaleTextContainer>
-          <FairytaleText>{contents[page].content}</FairytaleText>
+          {contents[page].content.split('.').map(
+            (s, id) =>
+              s && (
+                <TextContainer key={id}>
+                  <FairytaleText>{s}.</FairytaleText>
+                </TextContainer>
+              )
+          )}
         </FairytaleTextContainer>
       )}
       <Tools

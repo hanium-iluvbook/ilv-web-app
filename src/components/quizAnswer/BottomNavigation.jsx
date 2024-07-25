@@ -47,6 +47,10 @@ const BottomNavigationContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   background-color: ${backgroundGray};
+  z-index: 2;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const RetryButton = styled.div`

@@ -19,7 +19,9 @@ function CreateOptionalFairytale({ isProVersion, setIsProVersion }) {
           onClick={handleClickToggle}
         >
           <Toggle $isProVersion={isProVersion}>
-            {isProVersion && <Crown width={14} height={14} className="svg-icon"/>}
+            {isProVersion && (
+              <Crown width={14} height={14} className="svg-icon" />
+            )}
           </Toggle>
           {isProVersion ? 'PRO' : 'OFF'}
         </OptionalFairytaleToggle>
@@ -129,9 +131,9 @@ const BookContainer = styled.div`
 
 const BookItem = styled.div`
   position: absolute;
-  top: 72px;
-  left: 16%;
-  padding: 2% 4%;
+  top: calc(110px - 5vw);
+  left: 0;
+  padding: 0 12vw;
   display: flex;
   flex-direction: column;
   gap: 10px;

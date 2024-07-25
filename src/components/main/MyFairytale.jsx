@@ -28,6 +28,11 @@ const MyFairytaleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 100px;
+  margin-bottom: 16px;
+  @media screen and (max-width: 600px) {
+        width: 90vw;
+    }
 `;
 
 const MyOwnFairytale = styled.div`

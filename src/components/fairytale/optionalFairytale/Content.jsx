@@ -93,7 +93,14 @@ function Content({
         </FairytaleTextContainer>
       ) : (
         <FairytaleTextContainer>
-          <FairytaleText>{content}</FairytaleText>
+          {content.split('.').map(
+            (s, id) =>
+              s && (
+                <TextContainer key={id}>
+                  <FairytaleText>{s}.</FairytaleText>
+                </TextContainer>
+              )
+          )}
         </FairytaleTextContainer>
       )}
       <Tools

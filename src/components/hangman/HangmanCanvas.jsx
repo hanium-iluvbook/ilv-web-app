@@ -8,14 +8,15 @@ function HangmanCanvas() {
 
   const resetCanvas = () => {
     const canvas = canvasRef.current;
-    canvas.width = 450;
+    if(!canvas) return;
+    canvas.width = 380;
     canvas.height = 250;
 
     if (canvas.getContext) {
       const ctx = canvas.getContext('2d');
       ctx.beginPath();
       ctx.moveTo(0, 245);
-      ctx.lineTo(450, 245);
+      ctx.lineTo(380, 245);
       ctx.strokeStyle = 'black';
       ctx.lineWidth = 3;
       ctx.stroke();
@@ -94,7 +95,7 @@ function HangmanCanvas() {
     }
   }, [failCount]);
 
-  return <canvas ref={canvasRef} style={{ width: '450px', height: '250px' }} />;
+  return <canvas ref={canvasRef} style={{ width: '380px', height: '250px' }} />;
 }
 
 export default HangmanCanvas;

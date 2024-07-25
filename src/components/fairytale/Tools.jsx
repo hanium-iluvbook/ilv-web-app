@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import ToolButton from '../common/ToolButton';
-import {
-  lightBlack,
-  lightGray,
-  main,
-} from '../../constants/colors';
+import { lightBlack, lightGray, main } from '../../constants/colors';
 import { ReactComponent as Play } from '../../assets/play.svg';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -45,46 +41,46 @@ function Tools({
 
   return (
     <ToolsContainer>
-      <ToolsItem>
-        {page < 3 && (
-          <ReadingHelper
-            text={text}
-            page={page}
-            translateText={translateText}
-            setTranslateText={setTranslateText}
-            audioContent={audioContent}
-            setAudioContent={setAudioContent}
-            isTranslate={isTranslate}
-            setIsTranslate={setIsTranslate}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-          />
-        )}
+      {page < 3 && (
+        <ReadingHelper
+          text={text}
+          page={page}
+          translateText={translateText}
+          setTranslateText={setTranslateText}
+          audioContent={audioContent}
+          setAudioContent={setAudioContent}
+          isTranslate={isTranslate}
+          setIsTranslate={setIsTranslate}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+        />
+      )}
+      <PageTools>
         <PageNationBox>
           {new Array(4).fill(0).map((_, id) => (
             <PageNationItem key={id} $isNowPage={page === id} />
           ))}
         </PageNationBox>
-      </ToolsItem>
-      <PageSwitcher>
-        {page > 0 && (
-          <ToolButton width={48} onClick={handleClickBeforePageSwitcher}>
-            <Play fill={lightBlack} style={{ rotate: '180deg' }} />
-          </ToolButton>
-        )}
-        {page < 3 && (
-          <ToolButton width={48} onClick={handleClickNextPageSwitcher}>
-            <Play fill={lightBlack} />
-          </ToolButton>
-        )}
-        {page === 3 && (
-          <Link to="/">
-            <ExitButton>
-              Exit <Play fill="white" />
-            </ExitButton>
-          </Link>
-        )}
-      </PageSwitcher>
+        <PageSwitcher>
+          {page > 0 && (
+            <ToolButton width={48} onClick={handleClickBeforePageSwitcher}>
+              <Play fill={lightBlack} style={{ rotate: '180deg' }} />
+            </ToolButton>
+          )}
+          {page < 3 && (
+            <ToolButton width={48} onClick={handleClickNextPageSwitcher}>
+              <Play fill={lightBlack} />
+            </ToolButton>
+          )}
+          {page === 3 && (
+            <Link to="/">
+              <ExitButton>
+                Exit <Play fill="white" />
+              </ExitButton>
+            </Link>
+          )}
+        </PageSwitcher>
+      </PageTools>
     </ToolsContainer>
   );
 }
@@ -95,11 +91,17 @@ const ToolsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px 0px;
+  gap: 10px;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
-const ToolsItem = styled.div`
+const PageTools = styled.div`
   display: flex;
-  gap: 16px;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
 `;
 

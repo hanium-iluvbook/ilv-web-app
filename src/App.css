@@ -125,12 +125,15 @@ table {
 
 a {
   text-decoration: none;
+  width: min-content;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   cursor: default;
-  color: #1F2021;
+  color: #1f2021;
 }
 
 @font-face {

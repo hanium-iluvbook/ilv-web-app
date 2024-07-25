@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import MainHeader from '../components/main/MainHeader';
-import FriendsFairytale from '../components/main/FriendsFairytale';
 import MyFairytale from '../components/main/MyFairytale';
 
 function Main() {
   return (
     <MainContainer>
       <MainHeader />
-      <FriendsFairytale />
       <MyFairytale />
     </MainContainer>
   );
@@ -20,5 +18,6 @@ const MainContainer = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
 `;

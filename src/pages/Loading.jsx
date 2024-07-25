@@ -116,6 +116,7 @@ function Loading() {
   };
 
   const handleClickGoFairytale = () => {
+    if (!fairytale) return;
     setFailCount(0);
     setIsFinish(false);
     if (isProVersion) {
@@ -170,14 +171,12 @@ function Loading() {
             <AnswerDisplay />
             <HangmanCanvas />
             <AlphabetBox />
-            {fairytale && (
-              <Button
-                backgroundColor={darkMain}
-                onClick={handleClickGoFairytale}
-              >
-                동화책 보러가기
-              </Button>
-            )}
+            <Button
+              backgroundColor={fairytale ? darkMain : lightGray}
+              onClick={handleClickGoFairytale}
+            >
+              동화책 보러가기
+            </Button>
           </LoadingContainer>
         ) : !fairytale ? (
           <LoadingContainer>

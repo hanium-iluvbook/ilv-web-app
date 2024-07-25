@@ -3,36 +3,41 @@ import styled from 'styled-components';
 import { main, blue, green, purple, pink, red } from '../../constants/colors';
 import { ReactComponent as Play } from '../../assets/play.svg';
 import { ReactComponent as Heart } from '../../assets/heart.svg';
+import KeywordsBox from '../common/KeywordsBox';
+import KeywordsItem from '../common/KeywordsItem';
 
 function Fairytale({ fairytaleInfo, id }) {
-  const [fairytale, setFairytale] = useState(fairytaleInfo);
+  const [isLike, setIsLike] = useState(fairytaleInfo.like);
+
+  const handleClickLike = () => {
+    setIsLike((prev) => !prev)
+  }
+
   const colors = [main, blue, green, purple, pink];
 
-  return fairytale ? (
+  return fairytaleInfo ? (
     <FairytaleContainer color={colors[id % 5]}>
       <FairytaleInfo>
-        <Title>{fairytale.title}</Title>
-        <Keywords>
-          {fairytale.keywords.map((keyword, id) => (
-            <Keyword key={id}>{keyword}</Keyword>
-          ))}
-        </Keywords>
+        <Title>{fairytaleInfo.title}</Title>
+        <KeywordsBox keywords={fairytaleInfo.keywords} />
         <Btns>
           <StartBtn color={colors[id % 5]}>
             <Play fill={colors[id % 5]} />
             Start
           </StartBtn>
-          <LikeBtn>
+          <LikeBtn onClick={handleClickLike}>
             <Heart
-              fill={fairytale.like ? red : 'white'}
-              fillOpacity={fairytale.like ? 1 : 0.2}
-              stroke={fairytale.like ? 'red' : 'white'}
+              fill={isLike ? red : 'white'}
+              fillOpacity={isLike ? 1 : 0.2}
+              stroke={isLike ? 'red' : 'white'}
             />
           </LikeBtn>
         </Btns>
       </FairytaleInfo>
       <Circle />
-      {fairytale.background ? <Background src={fairytale.background} /> : null}
+      {fairytaleInfo.background ? (
+        <Background src={fairytaleInfo.background} />
+      ) : null}
     </FairytaleContainer>
   ) : null;
 }
@@ -66,34 +71,6 @@ const Title = styled.div`
   color: white;
 `;
 
-const Keywords = styled.div`
-  display: flex;
-  gap: 8px;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const Keyword = styled.div`
-  width: 108px;
-  height: 26px;
-  background: #ffffff29;
-  border: 1px solid #ffffff14;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 300px;
-  margin-bottom: 30px;
-  color: white;
-`;
-
 const Btns = styled.div`
   display: flex;
   justify-content: space-between;
@@ -118,7 +95,7 @@ const StartBtn = styled.button`
 
 const LikeBtn = styled.div`
   cursor: pointer;
-`
+`;
 
 const Circle = styled.div`
   width: 300px;

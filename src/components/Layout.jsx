@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 import Header from './Header';
 
-function Layout({ children, backgroundColor, color, title, padding }) {
+function Layout({
+  children,
+  backgroundColor,
+  color,
+  title,
+  padding,
+  isFairytale,
+}) {
   return (
     <LayoutContainer $backgroundColor={backgroundColor}>
-      <Header backgroundColor={backgroundColor} color={color} title={title} />
+      <Header
+        backgroundColor={title ? backgroundColor : 'transparent'}
+        color={color}
+        title={title}
+        isFairytale={isFairytale}
+      />
       <Main $padding={padding}>{children}</Main>
     </LayoutContainer>
   );

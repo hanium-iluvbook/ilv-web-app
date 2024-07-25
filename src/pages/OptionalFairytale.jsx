@@ -44,7 +44,7 @@ function OptionalFairytale() {
   const [text, setText] = useState(new Array(4).fill(0));
 
   return !isReading ? (
-    <Layout backgroundColor="transparent" color="white" padding={0}>
+    <Layout backgroundColor="transparent" color="white" padding={0} isFairytale={true}>
       {fairytale[page / 2] && keywords && (
         <Intro
           displayWidth={displayWidth}
@@ -63,6 +63,7 @@ function OptionalFairytale() {
         color="white"
         title={fairytale[0].title}
         padding={0}
+        isFairytale={true}
       >
         <Content
           displayWidth={displayWidth}
@@ -84,6 +85,7 @@ function OptionalFairytale() {
         color={lightBlack}
         title={fairytale[0].title}
         padding={0}
+        isFairytale={true}
       >
         <Options
           options={fairytale[(page - 1) / 2].options}
@@ -104,6 +106,7 @@ function OptionalFairytale() {
       color={lightBlack}
       title={fairytale[0].title}
       padding={0}
+      isFairytale={true}
     >
       <LastChapter
         page={page}
