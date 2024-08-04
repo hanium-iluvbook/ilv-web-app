@@ -19,6 +19,8 @@ function BottomNavigation() {
   };
 
   const handleClickHome = () => {
+    sessionStorage.removeItem('selectedOptions');
+    sessionStorage.removeItem('fairytale');
     navigate('/');
   };
 

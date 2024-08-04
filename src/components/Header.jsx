@@ -12,6 +12,8 @@ function Header({ backgroundColor, color, title, isFairytale }) {
       location.pathname === '/fairytale' ||
       location.pathname === '/optionalFairytale'
     ) {
+      sessionStorage.removeItem('selectedOptions');
+      sessionStorage.removeItem('fairytale');
       navigate('/');
     } else {
       navigate(-1);

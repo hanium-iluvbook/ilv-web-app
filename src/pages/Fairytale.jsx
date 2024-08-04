@@ -5,6 +5,7 @@ import Intro from '../components/fairytale/Intro';
 import { useLocation } from 'react-router-dom';
 import Content from '../components/fairytale/Content';
 import LastChapter from '../components/fairytale/LastChapter';
+import { FairytaleContext } from '../context/FairytaleContext';
 
 function Fairytale() {
   const location = useLocation();
@@ -27,55 +28,80 @@ function Fairytale() {
     };
   }, []);
 
-  return !isReading ? (
-    <Layout
-      backgroundColor="transparent"
-      color="white"
-      padding={0}
-      isFairytale={true}
+  const [translateText, setTranslateText] = useState(new Array(3).fill(0));
+  const [audioContent, setAudioContent] = useState(new Array(3).fill(0));
+  const [text, setText] = useState([
+    fairytale.pages[0].content.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ''
+    ),
+    0,
+    0,
+  ]);
+
+  return (
+    <FairytaleContext.Provider
+      value={{
+        fairytale,
+        keywords,
+        page,
+        setPage,
+        translateText,
+        setTranslateText,
+        audioContent,
+        setAudioContent,
+        text,
+        setText
+      }}
     >
-      {fairytale && keywords && (
-        <Intro
-          displayWidth={displayWidth}
+      {!isReading ? (
+        <Layout
+          backgroundColor="transparent"
+          color="white"
+          padding={0}
+          isFairytale={true}
+        >
+          {fairytale && keywords && (
+            <Intro
+              displayWidth={displayWidth}
+              title={fairytale.title}
+              summary={fairytale.summary}
+              keywords={keywords}
+              cover={fairytale.pages[0].imgURL}
+              setIsReading={setIsReading}
+            />
+          )}
+        </Layout>
+      ) : page < 3 ? (
+        <Layout
+          backgroundColor="transparent"
+          color="white"
           title={fairytale.title}
-          summary={fairytale.summary}
-          keywords={keywords}
-          cover={fairytale.pages[0].imgURL}
-          setIsReading={setIsReading}
-        />
+          padding={0}
+          isFairytale={true}
+        >
+          <Content displayWidth={displayWidth} />
+        </Layout>
+      ) : (
+        <Layout
+          backgroundColor="white"
+          color={lightBlack}
+          title={fairytale.title}
+          padding={0}
+          isFairytale={true}
+        >
+          <LastChapter
+            level={difficulty}
+            fairytale={fairytale}
+            page={page}
+            setPage={setPage}
+            title={fairytale.title}
+            content={fairytale.pages.flatMap((v) => v.content).join('')}
+            audioContent={audioContent}
+          />
+        </Layout>
       )}
-    </Layout>
-  ) : page < 3 ? (
-    <Layout
-      backgroundColor="transparent"
-      color="white"
-      title={fairytale.title}
-      padding={0}
-      isFairytale={true}
-    >
-      <Content
-        displayWidth={displayWidth}
-        page={page}
-        setPage={setPage}
-        contents={fairytale.pages}
-      />
-    </Layout>
-  ) : (
-    <Layout
-      backgroundColor="white"
-      color={lightBlack}
-      title={fairytale.title}
-      padding={0}
-      isFairytale={true}
-    >
-      <LastChapter
-        page={page}
-        setPage={setPage}
-        level={difficulty}
-        title={fairytale.title}
-        content={fairytale.pages.flatMap((v) => v.content).join('')}
-      />
-    </Layout>
+    </FairytaleContext.Provider>
   );
 }
 

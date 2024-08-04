@@ -62,6 +62,7 @@ const Button = styled.div`
   background-color: white;
   box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.1);
   color: ${(props) => props.$color};
+  cursor: pointer;
 `;
 
 export default ReviewItem;

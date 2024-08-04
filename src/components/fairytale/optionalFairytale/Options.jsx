@@ -5,17 +5,7 @@ import SelectItem from './SelectItem';
 import Tools from './Tools';
 import { useState } from 'react';
 
-function Options({
-  options,
-  page,
-  setPage,
-  fairytale,
-  setFairytale,
-  keywords,
-  selectedOptions,
-  setSelectedOptions,
-  audioContent,
-}) {
+function Options({ options, keywords, selectedOptions, setSelectedOptions }) {
   const [selected, setSelected] = useState(false);
 
   return (
@@ -37,15 +27,10 @@ function Options({
         </SelectBox>
       </SelectInfo>
       <Tools
-        page={page}
-        setPage={setPage}
         selected={selected}
-        fairytale={fairytale}
-        setFairytale={setFairytale}
         keywords={keywords}
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
-        audioContent={audioContent}
       />
     </OptionsContainer>
   );

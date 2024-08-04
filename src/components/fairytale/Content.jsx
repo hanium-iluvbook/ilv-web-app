@@ -1,35 +1,37 @@
 import styled from 'styled-components';
 import Tools from './Tools';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { darkGray, main, whiteGray } from '../../constants/colors';
+import { FairytaleContext } from '../../context/FairytaleContext';
 
-function Content({ displayWidth, contents, page, setPage }) {
+function Content({ displayWidth }) {
+  const { fairytale, page, text, setText, translateText } =
+    useContext(FairytaleContext);
+
   const [isTranslate, setIsTranslate] = useState(true);
-  const [translateText, setTranslateText] = useState(new Array(3).fill(0));
-  const [audioContent, setAudioContent] = useState(new Array(3).fill(0));
-  const [text, setText] = useState(
-    contents[0].content.replace(
-      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-      ''
-    )
-  );
 
   useEffect(() => {
     setIsTranslate(false);
-    setText(
-      contents[page].content.replace(
+    // 페이지 변경 시, 해당 페이지에 이모티콘 제외 텍스트가 없는 경우
+    if (!text[page]) {
+      const newText = [...text];
+      newText[page] = fairytale.pages[page].content.replace(
         /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
         ''
-      )
-    );
+      );
+      setText(newText);
+    }
   }, [page]);
 
   return (
     <ContentContainer>
-      <FairytaleImg $displayWidth={displayWidth} $src={contents[page].imgURL} />
+      <FairytaleImg
+        $displayWidth={displayWidth}
+        $src={fairytale.pages[page].imgURL}
+      />
       {isTranslate ? (
         <FairytaleTextContainer $isTranslate={isTranslate}>
-          {contents[page].content.split('.').map(
+          {fairytale.pages[page].content.split('.').map(
             (s, id) =>
               s && (
                 <TextContainer key={id}>
@@ -45,7 +47,7 @@ function Content({ displayWidth, contents, page, setPage }) {
         </FairytaleTextContainer>
       ) : (
         <FairytaleTextContainer>
-          {contents[page].content.split('.').map(
+          {fairytale.pages[page].content.split('.').map(
             (s, id) =>
               s && (
                 <TextContainer key={id}>
@@ -55,17 +57,7 @@ function Content({ displayWidth, contents, page, setPage }) {
           )}
         </FairytaleTextContainer>
       )}
-      <Tools
-        page={page}
-        setPage={setPage}
-        text={text}
-        isTranslate={isTranslate}
-        setIsTranslate={setIsTranslate}
-        translateText={translateText}
-        setTranslateText={setTranslateText}
-        audioContent={audioContent}
-        setAudioContent={setAudioContent}
-      />
+      <Tools isTranslate={isTranslate} setIsTranslate={setIsTranslate} />
     </ContentContainer>
   );
 }

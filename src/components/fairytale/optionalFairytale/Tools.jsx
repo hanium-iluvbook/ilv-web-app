@@ -9,28 +9,34 @@ import {
 } from '../../../constants/colors';
 import { ReactComponent as Play } from '../../../assets/play.svg';
 import { ReactComponent as Star } from '../../../assets/star.svg';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReadingHelper from '../ReadingHelper';
 import axios from 'axios';
+import { OptionalFairytaleContext } from '../../../context/OptionalFairytaleContext';
+import { useNavigate } from 'react-router-dom';
 
 function Tools({
-  page,
-  setPage,
-  text,
   isTranslate,
   setIsTranslate,
-  translateText,
-  setTranslateText,
-  audioContent,
-  setAudioContent,
   selected,
-  fairytale,
-  setFairytale,
   keywords,
   selectedOptions,
   setSelectedOptions,
 }) {
+  const {
+    fairytale,
+    setFairytale,
+    page,
+    setPage,
+    text,
+    translateText,
+    setTranslateText,
+    audioContent,
+    setAudioContent,
+  } = useContext(OptionalFairytaleContext);
+
+  const navigate = useNavigate();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -108,6 +114,10 @@ function Tools({
     const newSelectedOptions = [...selectedOptions];
     newSelectedOptions[(page - 1) / 2] = selected;
     setSelectedOptions(newSelectedOptions);
+    sessionStorage.setItem(
+      'selectedOptions',
+      JSON.stringify(newSelectedOptions)
+    );
     setIsLoading(true);
 
     if (page === 5) {
@@ -117,6 +127,7 @@ function Tools({
           const newFairytale = [...fairytale];
           newFairytale[(page + 1) / 2] = response.data;
           setFairytale(newFairytale);
+          sessionStorage.setItem('fairytale', JSON.stringify(newFairytale));
           handleClickNextPageSwitcher();
           setIsLoading(true);
         })
@@ -129,6 +140,7 @@ function Tools({
           const newFairytale = [...fairytale];
           newFairytale[(page + 1) / 2] = response.data;
           setFairytale(newFairytale);
+          sessionStorage.setItem('fairytale', JSON.stringify(newFairytale));
           handleClickNextPageSwitcher();
           setIsLoading(true);
         })
@@ -138,11 +150,17 @@ function Tools({
     }
   };
 
+  const handleClickExit = () => {
+    sessionStorage.removeItem('selectedOptions');
+    sessionStorage.removeItem('fairytale');
+    navigate('/');
+  };
+
   return (
     <ToolsContainer>
       {page < 7 && page % 2 === 0 && (
         <ReadingHelper
-          text={text}
+          text={text[page / 2]}
           page={page / 2}
           translateText={translateText}
           setTranslateText={setTranslateText}
@@ -198,11 +216,9 @@ function Tools({
           )}
           {/** 나가기 버튼 */}
           {page === 7 && (
-            <Link to="/">
-              <ExitButton>
-                Exit <Play fill="white" />
-              </ExitButton>
-            </Link>
+            <ExitButton onClick={handleClickExit}>
+              Exit <Play fill="white" />
+            </ExitButton>
           )}
         </PageSwitcher>
       </PageTools>

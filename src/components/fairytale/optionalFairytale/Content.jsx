@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 import Tools from './Tools';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { darkGray, main, purple, whiteGray } from '../../../constants/colors';
 import { ReactComponent as Chevron } from '../../../assets/chevron.svg';
+import { OptionalFairytaleContext } from '../../../context/OptionalFairytaleContext';
 
-function Content({
-  displayWidth,
-  fairytale,
-  page,
-  setPage,
-  selectedOptions,
-  translateText,
-  setTranslateText,
-  audioContent,
-  setAudioContent,
-  text,
-  setText,
-}) {
+function Content({ displayWidth, selectedOptions }) {
+  const {
+    fairytale,
+    page,
+    text,
+    setText,
+    translateText,
+  } = useContext(OptionalFairytaleContext);
+
   const [isTranslate, setIsTranslate] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
 
@@ -35,6 +32,7 @@ function Content({
   }, [page]);
 
   useEffect(() => {
+    setIsTranslate(false)
     // 페이지 변경 시, 해당 페이지에 이모티콘 제외 텍스트가 없는 경우
     if (page % 2 === 0 && !text[page / 2]) {
       const newText = [...text];
@@ -104,16 +102,8 @@ function Content({
         </FairytaleTextContainer>
       )}
       <Tools
-        page={page}
-        setPage={setPage}
-        text={text[page / 2]}
         isTranslate={isTranslate}
         setIsTranslate={setIsTranslate}
-        translateText={translateText}
-        setTranslateText={setTranslateText}
-        audioContent={audioContent}
-        setAudioContent={setAudioContent}
-        fairytale={fairytale}
       />
     </ContentContainer>
   );

@@ -3,20 +3,21 @@ import ToolButton from '../common/ToolButton';
 import { lightBlack, lightGray, main } from '../../constants/colors';
 import { ReactComponent as Play } from '../../assets/play.svg';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReadingHelper from './ReadingHelper';
+import { FairytaleContext } from '../../context/FairytaleContext';
 
-function Tools({
-  page,
-  setPage,
-  text,
-  isTranslate,
-  setIsTranslate,
-  translateText,
-  setTranslateText,
-  audioContent,
-  setAudioContent,
-}) {
+function Tools({ isTranslate, setIsTranslate }) {
+  const {
+    page,
+    setPage,
+    text,
+    translateText,
+    setTranslateText,
+    audioContent,
+    setAudioContent,
+  } = useContext(FairytaleContext);
+
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ function Tools({
     <ToolsContainer>
       {page < 3 && (
         <ReadingHelper
-          text={text}
+          text={text[page]}
           page={page}
           translateText={translateText}
           setTranslateText={setTranslateText}
